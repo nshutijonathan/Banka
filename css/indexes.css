@@ -1,5 +1,7 @@
 body {
   background: black;
+  /*background-image: url('../images/banking2.jpg');*/
+  background-size: cover;
 }
 .header-list{
   color: white;
