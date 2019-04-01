@@ -1,6 +1,7 @@
 body {
   font-family: "Avenir Next";
   background-color:  #eeeeee;
+  height: 100%;
 }
 
 li {
@@ -172,4 +173,62 @@ input{
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+.box p{
+  margin: 0 0 0px;
+  padding: 0;
+  color: black;
+  text-align: center;
+
+}
+.box .inputBox{
+  position: relative;
+
+}
+.box .inputBox input{
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: black/*#fff*/;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+.box .inputBox input:focus ~ label {
+  top: -18px;
+  left: 0;
+  color: #03a9f4;
+  font-size: 12px;
+}
+#send
+{
+  background: transparent;
+  border:none;
+  outline: none;
+  color: blue;
+  background: #03a9f4;
+  padding: 5px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+ #p{
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align:left;
+
+}
+.box{
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 400px;
+  height:100%px;
+  padding: 30px;
+  top: 50%;
+  left: 50%;
+  transform: translate(110%,-0%); 
+  /*background:rgba(0,0,0,.8);*/
+  box-shadow: 0 15px 25px rgba(0,0,0,.5);
 }
