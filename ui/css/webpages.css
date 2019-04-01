@@ -240,3 +240,32 @@ input{
   /*background:rgba(0,0,0,.8);*/
   box-shadow: 0 15px 25px rgba(0,0,0,.5);
 }
+/* css of the profile*/
+.profile {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 200px;
+  margin: auto;
+  text-align: left;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+.open-btn-reset-password{
+
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #01579b;
+  width: 50%;
+  border: 0;
+  padding: 40px;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 13px;
+  cursor: pointer;
+  margin-left: 70px;
+  width: 520px;
+
+}
