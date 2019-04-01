@@ -41,7 +41,7 @@ table th{
   outline: none;
 }
 .main {
-  padding:100px 50px;
+  padding:100px 30px;
 }
 .copy-container h1{
   font-size: 20px;
@@ -58,14 +58,7 @@ table th{
 
 }
 
-input{
- width: 400px;
- top margin: 1px;
- bottom margin: 3px;
- padding: 0px;
- font size: 18px;
- text-align: center;
-}
+
 .footer {
   background-color:white/*#2f5167*/;
   color:black/*#fff*/;
@@ -95,26 +88,25 @@ input{
 .section-title{
 background-color: white;
 text-align: center;
+margin: 3px 4px;
+top margin: 3px;
+bottom margin: 3px;
+padding: 0px;
+font size: 18px;
+
 }
-input{
-  width:400px;
-  margin-top:10px;
-  margin-bottom:30px;
-  height: 50px
-  padding:20px;
-  font-size:18px;
-  border:1px solid;
-  color:#dee7ec;
-  text-align: center;
-}
-textarea{
-width:400px;
-height: 120px
-}
+
+
 #send-button{
   color: black;
 
 }
 .main h3{
   text-align: center;
+}
+.contact-submit{
+  text-align: center;
+}
+input{
+  width: 300px;
 }
