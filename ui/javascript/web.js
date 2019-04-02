@@ -32,4 +32,15 @@ function sign_up(){
 function  staff_sign_up(){
 	alert("Successfully signed up as a staff");
 }
+function credit_users(){
+	   var retactivate=confirm("are you sure to credit this bank account?");
+	if(retactivate==true){
+		alert("User  bank account successfully Creadited!!!");
+		return true
+	}
+	else{
+		alert("User bank account is not  Creadited!!!");
+		return false;
+	}
+}
 
