@@ -43,4 +43,16 @@ function credit_users(){
 		return false;
 	}
 }
+function debit_users(){
+	   var retactivate=confirm("are you sure to debit?");
+	if(retactivate==true){
+		alert("User  bank account successfully Debited!!!");
+		return true
+	}
+	else{
+		alert("User bank account is not  debited!!!");
+		return false;
+	}
+}
+
 
