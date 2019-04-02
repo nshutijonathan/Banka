@@ -54,5 +54,15 @@ function debit_users(){
 		return false;
 	}
 }
-
+function delete_account(){
+	var retactivate=confirm("are you sure to delete this account?");
+	if(retactivate==true){
+		alert("Bank Account deleted Successfully");
+		return true
+	}
+	else{
+		alert("Bank Account not deleted");
+		return false;
+	}
+}
 
