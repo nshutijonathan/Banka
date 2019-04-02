@@ -29,4 +29,7 @@ function sign_up(){
 	document.getElementsByClassName('inputBox')[0].style.visibility = 'hidden';
 	
 }
+function  staff_sign_up(){
+	alert("Successfully signed up as a staff");
+}
 
