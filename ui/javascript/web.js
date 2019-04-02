@@ -12,3 +12,15 @@ function deactivate(){
 		return false;
 	}
 }
+function activate(){
+	var retactivate=confirm("are you sure to activate this User account?");
+	if(retactivate==true){
+		alert("User account successfully activated!!!");
+		return true
+	}
+	else{
+		alert("User is not activated");
+		return false;
+	}
+
+}
