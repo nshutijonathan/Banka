@@ -1,5 +1,5 @@
 function create_account(){
-    alert("check you email we sent you a link to proceed");
+    alert("Acount created successsfully check you email to proceed");
 }
 function deactivate(){
 	var retactivate=confirm("are you sure to deactivate this account?");
@@ -23,4 +23,9 @@ function activate(){
 		return false;
 	}
 
+}
+function sign_up(){
+	document.getElementById("panel").style.display = "block";
+	document.getElementsByClassName('inputBox')[0].style.visibility = 'hidden';
+	
 }
