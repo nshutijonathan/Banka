@@ -12,8 +12,8 @@
 	<div class="header-logo">BANKA</div>
 	<div class="header-list">
 		<ul>
-			<li><a href="homepage.html"></a></li>
-			<li><a href="#">Help</a></li>
+			<li><a href=""></a></li>
+			<li><a href="homepage.html">Home</a></li>
 			<div class="dropdown">
                   <button class="dropbtn">Jonathan
                   <i class="fa fa-caret-down"></i>
@@ -21,23 +21,33 @@
                   <div class="dropdown-content">
                     <a href="view_profile.html">Profile</a>
                     <a href="index.html">Logout</a>
-                    <a href="#"></a>
                   </div>
                </div>
 		</ul>
 	</div>
 
 </div>
-<div class="aParent">
-    <div>
-        <span></span><br>
-        <a href="deactivate.html"><button class="open-btn">Deactivate User Accounts</button></a>
-    </div>
-    <div class="aParent">
-        <span></span><br>
-        <a href=""><button class="open-btn">Activate User Accounts</button></a>
-    </div>
-</div>
+<div class="box">
+    <P>DEACTIVATE ACCOUNT</P><br>
+    <form>
+      <div class="inputBox">
+        <label></label>
+        <input type="number" placeholder="Enter User Identification" name="" required="">
+        </div>
+      <div class="inputBox">
+      	<label></label>
+        <input type="text" name="" placeholder="Enter the User acoount number" required="">
+        </div>
+      <div class="inputBox">
+        <input type="text" name="" placeholder="Enter the User Names" required="">
+      </div>
+      <div class="inputBox">
+      </div>
+      <div class="inputBox">  
+      </div>
+      <input type="button" name="" value="DEACTIVATE" id="send" onclick="deactivate()"><br><br>
+    </form>
+  </div>
 <div class="footer">
 	<div class="footer-logo">BANKA</div>
 	<div class="footer-list">
@@ -49,5 +59,7 @@
 	</div>
 	<div class="copyrights">All rights reserved by Andela</div>
 </div>
+    <script src="../javascript/web.js">
+        </script>
 </body>
 </html>
