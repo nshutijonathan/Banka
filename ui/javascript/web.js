@@ -29,3 +29,4 @@ function sign_up(){
 	document.getElementsByClassName('inputBox')[0].style.visibility = 'hidden';
 	
 }
+
