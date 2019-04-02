@@ -120,7 +120,7 @@ input{
   font-size: 13px;
   cursor: pointer;
   margin-left: 70px;
-  width: 520px;
+  width: 220px;
 }
 .aParent div {
     float: left;
@@ -129,7 +129,7 @@ input{
 }
 .aParent{
   height: 300px;
-  text-align: center;
+  text-align: right;
 
 }
 .dropdown {
