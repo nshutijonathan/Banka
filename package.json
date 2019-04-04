@@ -1,0 +1,23 @@
+{
+  "name": "banka",
+  "version": "1.0.0",
+  "description": "Banka is core banking application that powers banking operations.It is meant to support a single bank.",
+  "main": "server.js",
+  "dependencies": {
+    "eslint": "^5.16.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nshutijonathan/Banka.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nshutijonathan/Banka/issues"
+  },
+  "homepage": "https://github.com/nshutijonathan/Banka#readme"
+}
