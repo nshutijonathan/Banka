@@ -16,3 +16,15 @@ describe('get welcome message',()=>{
 
 	});
 });
+describe('get error welcome message',()=>{
+	it('should not return welcome message',(done)=>{
+		chai.request(server)
+		.get('/3456')
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		});
+
+	});
+});

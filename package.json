@@ -3,30 +3,10 @@
   "version": "1.0.0",
   "description": "Banka is core banking application that powers banking operations.It is meant to support a single bank.",
   "main": "server.js",
-  "dependencies": {
-    "@babel/core": "^7.4.3",
-    "@babel/preset-env": "^7.4.3",
-    "@babel/register": "^7.4.0",
-    "babel-core": "^6.26.3",
-    "chai": "^4.2.0",
-    "chai-http": "^4.2.1",
-    "express": "^4.16.4",
-    "moment": "^2.24.0",
-    "nyc": "^13.3.0",
-    "uuid": "^3.3.2"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-watch": "^7.0.0",
-    "eslint": "^5.16.0",
-    "mocha": "^6.0.2",
-    "nodemon": "^1.18.10"
-  },
   "scripts": {
     "test": " nyc --reporter=html --reporter=text mocha --require @babel/register --timeout 10000 --exit server/tests/*.js",
     "start": "babel-node server/server.js",
-    "dev": "node_modules/.bin/nodemon server/server.js --exec babel-node --"
+    "dev": " nodemon --exec babel-node --presets @babel/preset-env  server/server.js"
   },
   "repository": {
     "type": "git",
@@ -37,5 +17,22 @@
   "bugs": {
     "url": "https://github.com/nshutijonathan/Banka/issues"
   },
-  "homepage": "https://github.com/nshutijonathan/Banka#readme"
+  "homepage": "https://github.com/nshutijonathan/Banka#readme",
+  "dependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/register": "^7.4.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "coveralls": "^3.0.3",
+    "eslint": "^5.16.0",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.10",
+    "nyc": "^13.3.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.0.2"
+  }
 }
