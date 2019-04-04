@@ -4,9 +4,16 @@
   "description": "Banka is core banking application that powers banking operations.It is meant to support a single bank.",
   "main": "server.js",
   "dependencies": {
-    "eslint": "^5.16.0"
+    "eslint": "^5.16.0",
+    "express": "^4.16.4",
+    "moment": "^2.24.0",
+    "uuid": "^3.3.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-watch": "^7.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
