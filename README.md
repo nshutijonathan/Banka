@@ -11,3 +11,6 @@ Banka is core banking application that powers banking operations.It is meant to 
  ### Heroku link Example
 
 [BANKA link]()
+
+## Contributor
+Jonathan Nshuti <nshutijonathan130@gmail.com>
