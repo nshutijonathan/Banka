@@ -29,8 +29,10 @@
     "coveralls": "^3.0.3",
     "eslint": "^5.16.0",
     "express": "^4.16.4",
+    "moment": "^2.24.0",
     "nodemon": "^1.18.10",
-    "nyc": "^13.3.0"
+    "nyc": "^13.3.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "mocha": "^6.0.2"
