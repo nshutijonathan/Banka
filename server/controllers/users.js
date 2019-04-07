@@ -1,4 +1,7 @@
 import express from 'express';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 import users_db from '../models/users';
 import validateUser from "../helpers/validations";
 
@@ -22,22 +25,36 @@ class Userscontrollers{
             message:"this email already exists"
           })
         }
+        bcrypt.hash(req.body.password, 10, (err, hash) =>{
+          const data={
+    id:users_db.length + 1,
+    email:req.body.email,
+    firstName:req.body.firstName,
+    lastName:req.body.lastName,
+    password:hash,
+    type:req.body.type,
+    isAdmin:req.body.isAdmin
+
+  }
+        });
 
 
       }
    	const data={
-		id:users_db.length + 1,
-		email:req.body.email,
-		firstName:req.body.firstName,
-		lastName:req.body.lastName,
-		password:req.body.password,
+    id:users_db.length + 1,
+    email:req.body.email,
+    firstName:req.body.firstName,
+    lastName:req.body.lastName,
+    password:req.body.password,
     type:req.body.type,
     isAdmin:req.body.isAdmin
 
-	}
+  }
 	users_db.push(data);
+  const users = allusers.filter(user => user.email == req.body.email);
+  const token = jwt.sign({ data }, process.env.SECRET_KEY);
 	return res.status(201).send({
-		data
+		token,data
 	})
 }
   catch(error){
