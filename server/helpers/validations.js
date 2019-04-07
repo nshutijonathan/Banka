@@ -30,11 +30,21 @@ class validateUser{
 		if(validator.isEmpty(req.body.password)){
 			throw Error("please confirm your password");
 		}
+		if(validator.isAlphanumeric(req.body.password)){
+			throw Error("password must contain special characters!")
+		}
 		if(validator.isEmpty(req.body.type)){
 			throw Error("type is required")
 		}
+		if(!validator.isAlphanumeric(req.body.type)){
+			throw Error("type must not contain special characters!")
+		}
+
 		if (validator.isEmpty(req.body.isAdmin)) {
 			throw Error("the row isAdmin is required")
+		}
+		if(!validator.isAlphanumeric(req.body.isAdmin)){
+			throw Error("isAdmin must not contain special characters!")
 		}
 		else{
 
