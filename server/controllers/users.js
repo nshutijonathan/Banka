@@ -1,5 +1,8 @@
 import express from 'express';
 import users_db from '../models/users';
+import validateUser from "../helpers/validations";
+
+const allusers=users_db;
 
 class Userscontrollers{
 	static getAllusers(req,res){
@@ -11,23 +14,39 @@ class Userscontrollers{
 	}
 
    static Usersignup(req,res){
+    try{
+      if(validateUser.validatesignup(req,res)){
+        const users=allusers.filter(user=>user.email==req.body.email);
+        if(users.length===1){
+          return res.status(409).send({
+            message:"this email already exists"
+          })
+        }
+
+
+      }
    	const data={
 		id:users_db.length + 1,
 		email:req.body.email,
 		firstName:req.body.firstName,
 		lastName:req.body.lastName,
 		password:req.body.password,
-        type:req.body.type,
-        isAdmin:req.body.isAdmin
+    type:req.body.type,
+    isAdmin:req.body.isAdmin
 
 	}
 	users_db.push(data);
 	return res.status(201).send({
 		data
-
-	});
-
+	})
+}
+  catch(error){
+    return res.status(400).json({
+      message:error.message
+    })
    }
+ }
+
    static getOneuser(req,res){
    		const selectedUser = users_db.find(user => user.id === parseInt(req.params.id, 10));
   if (selectedUser) {
