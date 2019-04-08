@@ -52,6 +52,33 @@ class validateUser{
 		return true;
 
 	}
+	static validatesignin(req,res){
+		if (typeof req.body.email==='number') {
+			throw Error("email must be in good format ");
+		}
+		if(validator.isEmpty(req.body.email)){
+			throw Error("email is required")
+		}
+		if(!validator.isEmail(req.body.email)){
+			throw Error("your email must look like  this ex:andela@gmail.com");
+		}
+		if(!validator.isLength(req.body.password,{min:4,max:250})){
+			throw Error("password must be at lease 4 characters")
+		}
+		if(validator.isEmpty(req.body.password)){
+			throw Error("please confirm your password");
+		}
+		if(validator.isAlphanumeric(req.body.password)){
+			throw Error("password must contain special characters!")
+		}
+		else{
+
+		}
+		return true;
+
+
+
+	}
 
 }
 export default validateUser;
