@@ -1,4 +1,6 @@
 import express from 'express';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import users_db from '../models/users';
 import validateUser from "../helpers/validations";
 
@@ -23,29 +25,77 @@ class Userscontrollers{
           })
         }
 
-
       }
+
    	const data={
-		id:users_db.length + 1,
-		email:req.body.email,
-		firstName:req.body.firstName,
-		lastName:req.body.lastName,
-		password:req.body.password,
+    id:users_db.length + 1,
+    email:req.body.email,
+    firstName:req.body.firstName,
+    lastName:req.body.lastName,
+    password:req.body.password,
     type:req.body.type,
     isAdmin:req.body.isAdmin
 
-	}
+  }
+  
 	users_db.push(data);
-	return res.status(201).send({
-		data
-	})
-}
+  const users = allusers.filter(user => user.email == req.body.email);
+  jwt.sign({data},'secretkey',(err,token)=>{
+    return res.status(201).send({
+    token,data
+  })
+
+  })
+	}
   catch(error){
-    return res.status(400).json({
+    return res.status(400).send({
       message:error.message
     })
    }
  }
+ static Usersignin(req,res){
+  try{
+    if(validateUser.validatesignin(req,res)){
+      const oneuser={
+        email: req.body.email,
+        password:req.body.password
+      }
+      const checkmail=allusers.filter(user=>user.email==oneuser.email);
+      if(checkmail==false){
+        return res.status(401).send({
+          message: "Incorrect email or password"
+        })
+      }
+      const checkpswd=allusers.filter(user=>user.password==oneuser.password);
+      if(checkpswd==false){
+        return res.status(401).send({
+          message:"Incorrect email or password"
+        })
+      }
+      else{
+        let email=req.body.email,password=req.body.password
+      
+       jwt.sign({oneuser},'secretkey',(err,token)=>{
+          return res.status(201).send({
+             token,message:"Successfully logged in",email,password
+             })
+
+
+      })
+
+    }
+  }
+
+ }
+ catch(error){
+    return res.status(400).send({
+      message:error.message
+    })
+   }
+
+}
+
+
 
    static getOneuser(req,res){
    		const selectedUser = users_db.find(user => user.id === parseInt(req.params.id, 10));
