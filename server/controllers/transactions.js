@@ -22,7 +22,7 @@ class Transactioncontrollers{
 		let newBalance=data.newBalance;
 		return res.status(201).send({
 			message:"successfully added",
-			data:id,accountNumber,amount,cashier,type,newBalance
+			id,accountNumber,amount,cashier,type,newBalance
 		})
 	}
 	static getAlltransactions(req,res){
