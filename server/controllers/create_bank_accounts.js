@@ -44,5 +44,16 @@ class BankAccountscontrollers{
     data:accountIndex
   });
    };
+   static deleteAccounts(req,res){
+   	const accountId = req.params.accountNumber;
+   	const accountIndex = bank_accounts.find(check => check.accountNumber === parseInt(accountId, 10));
+   	if(!accountIndex){
+   		return res.status(404).send({error:`Account  with id ${accountId} not found`});
+   	}
+   	const index=bank_accounts.indexOf(accountIndex);
+   	bank_accounts.splice(index,1);
+   	return res.status(200).send({message:`User with id ${accountId} Successfully deleted!`});
+
+   }
 }
 export default BankAccountscontrollers;
