@@ -26,5 +26,22 @@ class BankAccountscontrollers{
 		})
 
 	}
+	static deactivateAccounts(){
+		const accountid = req.params.accountNumber;
+		const accountIndex = bank_accounts.find(check=> check.id === parseInt(accountid, 10));
+		if(!accountIndex){
+			return res.status(404).send({error:`Acoount  with number  ${accountid } not found`});
+		}
+		accountIndex.accountNumber=req.body.accountNumber;
+		accountIndex.firstName=req.body.firstName;
+		accountIndex.lastName=req.body.lastName;
+		accountIndex.email=req.body.email;
+		accountIndex.type=req.body.type;
+		accountIndex.openingBalance=req.body.openingBalance;
+		return res.status(200).send({
+			message:"successfully updated",
+			accountIndex
+		})
+	}
 }
 export default BankAccountscontrollers;
