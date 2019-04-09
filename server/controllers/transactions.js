@@ -1,11 +1,15 @@
 import express from 'express';
 import transactions from '../models/transactions';
-
+import users_db from '../models/users';
+import bank_accounts  from '../models/create_bank_accounts';
+let date=new Date();
 class Transactioncontrollers{
 	static createTransactions(req,res){
+		const accId = req.body.accountNumber;
+
 		const data={
 			id:transactions.length+1,
-            createdOn:req.body.createdOn,
+            createdOn:date,
             type:req.body.type,
             accountNumber:req.body.accountNumber,
             cashier:req.body.cashier,
@@ -21,7 +25,7 @@ class Transactioncontrollers{
 		let type=data.type;
 		let newBalance=data.newBalance;
 		return res.status(201).send({
-			message:"successfully added",
+			message:"user successfully debited",
 			id,accountNumber,amount,cashier,type,newBalance
 		})
 	}
