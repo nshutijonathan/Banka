@@ -9,4 +9,7 @@ router.post('/api/v1/auth/signin',Userscontrollers.Usersignin);
 router.get('/api/v1/users/:id',Userscontrollers.getOneuser);
 router.delete('/api/v1/users/:id',Userscontrollers.deleteUser);
 router.put('/api/v1/users/:id',Userscontrollers.updateUser);
+
+//bank accounts endpoints
+router.post('/api/v1/accounts',BankAccountscontrollers.createAccount);
 export default router;
