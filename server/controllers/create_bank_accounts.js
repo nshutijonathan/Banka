@@ -1,22 +1,35 @@
 import express from 'express';
 import bank_accounts  from '../models/create_bank_accounts';
-
+import users_db from '../models/users';
+const users=users_db;
 class BankAccountscontrollers{
 	static createAccount(req,res){
 		const data={
-			accountNumber:bank_accounts.length+1,
-			firstName:req.body.firstName,
-			lastName:req.body.lastName,
-			email:req.body.email,
+      id:bank_accounts.length+1,
+			accountNumber:req.body.accountNumber,
+      createdOn:req.body.createdOn,
+      owner:req.body.owner,
 			type:req.body.type,
+      status:req.body.status,
 			openingBalance:req.body.openingBalance,
-			status:req.body.status
 
 		}
-		bank_accounts.push(data);
+    let check=users.filter(user=>user.id==req.body.owner);
+    if(check==false){
+      return res.status(404).send({
+        message:"owner with provided id not found "
+      })
+    }
+    bank_accounts.push(data);
+    let AccountNumber=data.accountNumber;
+    let firstName=check[0].firstName;
+    let lastName=check[0].firstName;
+    let email=check[0].email;
+    let type=data.type;
+    let openingBalance=data.openingBalance;
 		return res.status(201).send({
 			message:"successfully created",
-			data
+			AccountNumber,firstName,lastName,email,type,openingBalance
 		})
 
 
