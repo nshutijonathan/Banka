@@ -39,7 +39,7 @@ class Userscontrollers{
   }
   
 	users_db.push(data);
-  const users = allusers.filter(user => user.email == req.body.email);
+  
   jwt.sign({data},'secretkey',(err,token)=>{
     return res.status(201).send({
     token,data
