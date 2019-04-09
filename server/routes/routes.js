@@ -19,6 +19,6 @@ router.put('/api/v1/accounts/:accountNumber',BankAccountscontrollers.deactivateA
 router.delete('/api/v1/accounts/:accountNumber',BankAccountscontrollers.deleteAccounts);
 //transactions endpoints
 router.post('/api/v1/transactions/debit',Transactioncontrollers.createTransactions);
-router.put('/api/v1/transactions/debit/:accountNumber',Transactioncontrollers.createTransactions);
+router.post('/api/v1/transactions/debit/:accountNumber',Transactioncontrollers.createTransactions);
 router.get('/api/v1/transactions',Transactioncontrollers.getAlltransactions);
 export default router;

@@ -26,7 +26,7 @@ class BankAccountscontrollers{
     Accounts.push(data);
     let AccountNumber=data.accountNumber;
     let firstName=check[0].firstName;
-    let lastName=check[0].firstName;
+    let lastName=check[0].lastName;
     let email=check[0].email;
     let type=data.type;
     let openingBalance=data.openingBalance;
