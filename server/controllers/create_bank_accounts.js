@@ -15,9 +15,10 @@ class BankAccountscontrollers{
 
 		}
     let check=users.filter(user=>user.id==req.body.owner);
+    let ownerId=req.body.owner;
     if(check==false){
-      return res.status(404).send({
-        message:"owner with provided id not found "
+      return res.status(404).send({error:`Account  with id ${ownerId} not found`
+        
       })
     }
     bank_accounts.push(data);
