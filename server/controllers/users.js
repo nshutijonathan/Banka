@@ -132,7 +132,10 @@ class Userscontrollers{
   userIndex.password=req.body.password;
   userIndex.type=req.body.type;
   userIndex.isAdmin=req.body.isAdmin;
-  return res.status(200).send(userIndex);
+  return res.status(200).send({
+    message:"Successfully updated",
+    data:userIndex
+  });
    };
 }
 export default Userscontrollers;
