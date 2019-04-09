@@ -46,5 +46,9 @@ class Transactioncontrollers{
 			transactions
 		})
 	}
+	static createTransactionscredit(req,res){
+		
+
+	}
 }
 export default Transactioncontrollers;
