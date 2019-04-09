@@ -3,6 +3,7 @@ import transactions from '../models/transactions';
 import users_db from '../models/users';
 import bank_accounts from '../models/create_bank_accounts';
 let date=new Date();
+//transactions class
 class Transactioncontrollers{
 	static createTransactions(req,res){
 		const accId = req.params.accountNumber;
