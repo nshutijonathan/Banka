@@ -14,4 +14,5 @@ router.put('/api/v1/users/:id',Userscontrollers.updateUser);
 //bank accounts endpoints
 router.post('/api/v1/accounts',BankAccountscontrollers.createAccount);
 router.get('/api/v1/accounts',BankAccountscontrollers.getbankAccounts);
+router.put('/api/v1/accounts/:accountNumber',BankAccountscontrollers.deactivateAccounts);
 export default router;
