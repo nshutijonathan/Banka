@@ -73,11 +73,14 @@ class Userscontrollers{
         })
       }
       else{
-        let email=req.body.email,password=req.body.password
-      
+        const checkmail=allusers.filter(user=>user.email==oneuser.email);
+        let id=checkmail[0].id;
+        let firstName=checkmail[0].firstName;
+        let lastName=checkmail[0].lastName;
+        let email=checkmail[0].email;
        jwt.sign({oneuser},'secretkey',(err,token)=>{
           return res.status(201).send({
-             token,message:"Successfully logged in",email,password
+             token,message:"Successfully logged in",id,firstName,lastName,email
              })
 
 
