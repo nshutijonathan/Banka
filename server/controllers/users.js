@@ -39,7 +39,7 @@ class Userscontrollers{
   }
   
 	users_db.push(data);
-  const users = allusers.filter(user => user.email == req.body.email);
+  
   jwt.sign({data},'secretkey',(err,token)=>{
     return res.status(201).send({
     token,data
@@ -132,7 +132,10 @@ class Userscontrollers{
   userIndex.password=req.body.password;
   userIndex.type=req.body.type;
   userIndex.isAdmin=req.body.isAdmin;
-  return res.status(200).send(userIndex);
+  return res.status(200).send({
+    message:"Successfully updated",
+    data:userIndex
+  });
    };
 }
 export default Userscontrollers;
