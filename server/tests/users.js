@@ -29,7 +29,7 @@ describe('get a specific user ',()=>{
 	});
 	it('Should not be able to get specific user ',(done)=>{
 		chai.request(server)
-		.get('/api/v1/users/12345678901')
+		.get('/api/v1/users/12345678901//')
 		.end((err,res)=>{
 			console.log(res.body);
 			res.body.should.be.an('object');
@@ -44,11 +44,30 @@ describe('create user',()=>{
 			email:"nshuti@gmail.com",
 			firstName:"yva",
 			lastName:"bebe",
-			password:"qwe12",
+			password:"qwe12@@#",
 			type:"staff",
 			isAdmin:"no"
 
-		},
+		};
+		chai.request(server)
+		.post('/api/v1/auth/signup')
+		.send(user)
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		})
+	})
+	it('should not be able to create user',(done)=>{
+		const user={
+			email:"",
+			firstName:"yva",
+			lastName:"bebe",
+			password:"qwe12@@#",
+			type:"staff",
+			isAdmin:"no"
+
+		};
 		chai.request(server)
 		.post('/api/v1/auth/signup')
 		.send(user)
@@ -59,3 +78,15 @@ describe('create user',()=>{
 		})
 	})
 })
+describe('delete user',()=>{
+	it('Should be to delete a user',(done)=>{
+		chai.request(server)
+		.delete('/api/v1/users/1')
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		});
+
+	});
+});
