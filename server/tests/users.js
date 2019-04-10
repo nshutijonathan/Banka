@@ -132,3 +132,43 @@ describe('delete user',()=>{
 
 	});
 });
+describe('update the  user',()=>{
+	it('Should be able to update a user',(done)=>{
+		const user={
+			email:"nnnn@gmail.com",
+			firstName:"yva",
+			lastName:"bebe",
+			password:"qwe12@@#",
+			type:"staff",
+			isAdmin:"no"
+
+		};
+		chai.request(server)
+		.put('/api/v1/users/1')
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		});
+
+	});
+	it('Should not be able to update a user',(done)=>{
+		const user={
+			email:"",
+			firstName:"yva",
+			lastName:"bebe",
+			password:"qwe12@@#",
+			type:"staff",
+			isAdmin:"no"
+
+		};
+		chai.request(server)
+		.put('/api/v1/users/1234567890s')
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		});
+
+	});
+});
