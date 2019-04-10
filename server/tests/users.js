@@ -38,3 +38,24 @@ describe('get a specific user ',()=>{
 
 	});
 });
+describe('create user',()=>{
+	it('should be able to create user',(done)=>{
+		const user={
+			email:"nshuti@gmail.com",
+			firstName:"yva",
+			lastName:"bebe",
+			password:"qwe12",
+			type:"staff",
+			isAdmin:"no"
+
+		},
+		chai.request(server)
+		.post('/api/v1/auth/signup')
+		.send(user)
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		})
+	})
+})
