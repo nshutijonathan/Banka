@@ -44,6 +44,7 @@ class Transactioncontrollers{
 	}
 	static getAlltransactions(req,res){
 		return res.status(200).send({
+			status:200,
 			transactions
 		})
 	}
@@ -79,6 +80,7 @@ class Transactioncontrollers{
 		let type=data.type;
 		let newBalance=data.newBalance;
 		return res.status(201).send({
+			status:201,
 			message:"user successfully credited",
 			id,accountNumber,amount,cashier,type,newBalance
 		})
