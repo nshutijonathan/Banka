@@ -5,7 +5,7 @@ chai.use(chaiHttp);
 chai.should();
 const date=new Date();
 describe('get all bank accounts',()=>{
-	it('Should be able to get all bank accounts',(done)=>{
+	it('Should be able to get all Bank accounts',(done)=>{
 		chai.request(server)
 		.get('/api/v1/accounts')
 		.end((err,res)=>{
