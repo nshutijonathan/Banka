@@ -1,3 +1,4 @@
+[![Coverage Status](https://coveralls.io/repos/github/nshutijonathan/Banka/badge.svg?branch=develop)](https://coveralls.io/github/nshutijonathan/Banka?branch=develop)
 # Banka
 Banka is core banking application that powers banking operations.It is meant to support a single bank.
 
