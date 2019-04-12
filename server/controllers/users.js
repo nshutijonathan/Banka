@@ -9,8 +9,8 @@ const allusers=users_db;
 class Userscontrollers{
 	static getAllusers(req,res){
 		return res.status(200).send({
-		'status':200,
-		'message':"All users retrieved Successfully!",
+		status:200,
+		message:"All users retrieved Successfully!",
 		users_db
 	});
 	}
