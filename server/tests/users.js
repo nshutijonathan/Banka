@@ -11,6 +11,8 @@ describe('get all users',()=>{
 		.end((err,res)=>{
 			console.log(res.body);
 			res.body.should.be.an('object');
+			res.body.should.have.property('status').eql(200);
+			res.body.should.have.property('message').eql('All users retrieved Successfully!');
 			done();
 		});
 

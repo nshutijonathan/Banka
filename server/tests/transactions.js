@@ -11,6 +11,7 @@ describe('get all transactions',()=>{
 		.end((err,res)=>{
 			console.log(res.body);
 			res.body.should.be.an('object');
+			res.body.should.have.property('status').eql(200);
 			done();
 		});
 
@@ -82,7 +83,7 @@ describe('Credit a bank account',()=>{
 
 		};
 		 chai.request(server)
-		.post('//api/v1/transactions/credit/123456')
+		.post('/api/v1/transactions/credit/123456')
 		.send(transactions)
 		.end((err,res)=>{
 			console.log(res.body);
