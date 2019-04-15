@@ -18,7 +18,6 @@ router.get('/api/v1/accounts',BankAccountscontrollers.getbankAccounts);
 router.put('/api/v1/accounts/:accountNumber',BankAccountscontrollers.deactivateAccounts);
 router.delete('/api/v1/accounts/:accountNumber',BankAccountscontrollers.deleteAccounts);
 //transactions endpoints
-router.post('/api/v1/transactions/debit',Transactioncontrollers.createTransactions);
 router.post('/api/v1/transactions/debit/:accountNumber',Transactioncontrollers.createTransactions);
 router.post('/api/v1/transactions/credit/:accountNumber',Transactioncontrollers.createTransactionscredit);
 router.get('/api/v1/transactions',Transactioncontrollers.getAlltransactions);

@@ -17,6 +17,16 @@ describe('get all users',()=>{
 		});
 
 	});
+	it('Should not be  able to get all the users',(done)=>{
+		chai.request(server)
+		.get('/api/v1/users/123456')
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		});
+
+	});
 });
 describe('get a specific user ',()=>{
 	it('Should be able to get specific user ',(done)=>{
