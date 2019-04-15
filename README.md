@@ -15,5 +15,12 @@ Banka is core banking application that powers banking operations.It is meant to 
 
 [BANKA link](https://bankaweb.herokuapp.com/)
 
+## API ENDPOINTS
+| Ressource URL | Methods  | Description  |
+| ------- | --- | --- |
+| / | GET | The index page |
+| /api/v1/auth/signup| POST | Sign up |
+| /api/v1/auth/signin| POST | Sign in |
+
 ## Contributor
 Jonathan Nshuti <nshutijonathan130@gmail.com>
