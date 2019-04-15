@@ -32,5 +32,46 @@ Banka is core banking application that powers banking operations.It is meant to 
 | /api/v1/transactions/debit/:accountNumber| POST| Debit specific user bank account |
 | /api/v1/transactions/credit/:accountNumber| POST| Credit specific user bank account |
 | /api/v1/transactions| GET| Get all users bank account transactions |
+## Tools Used
+
+### Language
+```
+*Javascript*
+```
+### Server Environment
+```
+ *NodeJS* 
+ ```
+### Framework
+```
+ *Express* 
+ ```
+### Testing Framework
+```
+ *Mocha* and *Chai*
+ ```
+### Style Guide
+```
+*Airbnb*
+```
+### Continuous Integration
+```
+Travis CI
+```
+### Test Coverage
+```
+nyc
+```
+### Git badge
+```
+coveralls
+```
+### Deployment
+```
+Heroku
+```
+## Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
 ## Contributor
 Jonathan Nshuti <nshutijonathan130@gmail.com>
