@@ -3,7 +3,7 @@ import chaiHttp from 'chai-http';
 import server from '../server';
 chai.use(chaiHttp);
 chai.should();
-
+//home route testes
 describe('get welcome message',()=>{
 	it('should return welcome message',(done)=>{
 		chai.request(server)
