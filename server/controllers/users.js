@@ -127,7 +127,7 @@ class Userscontrollers{
    	const userId = req.params.id;
   const userIndex = users_db.find(user => user.id === parseInt(userId, 10));
   if(!userIndex){
-  	return res.status(404).send({error:`User with id ${userId} not found`});
+  	return res.status(404).send({status:404,error:`User with id ${userId} not found`});
   }
   userIndex.email=req.body.email;
   userIndex.firstName=req.body.firstName;
@@ -136,6 +136,7 @@ class Userscontrollers{
   userIndex.type=req.body.type;
   userIndex.isAdmin=req.body.isAdmin;
   return res.status(200).send({
+    status:200,
     message:"Successfully updated",
     data:userIndex
   });

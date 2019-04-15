@@ -164,6 +164,8 @@ describe('update the  user',()=>{
 		.end((err,res)=>{
 			console.log(res.body);
 			res.body.should.be.an('object');
+			res.body.should.have.property("status").eql(404);
+			res.body.should.have.property("error").eql('User with id 1 not found');
 			done();
 		});
 

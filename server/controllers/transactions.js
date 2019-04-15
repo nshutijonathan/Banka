@@ -45,6 +45,8 @@ class Transactioncontrollers{
 	static getAlltransactions(req,res){
 		return res.status(200).send({
 			status:200,
+			success:true,
+			message:"transactions retrieved successfully",
 			transactions
 		})
 	}

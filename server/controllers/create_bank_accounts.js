@@ -39,7 +39,9 @@ class BankAccountscontrollers{
 	}
 	static getbankAccounts(req,res){
 		return res.status(200).send({
-			Accounts
+			status:200,
+      message:"Successfully retrieved",
+      Accounts
 		})
 
 	}
@@ -66,7 +68,7 @@ static deactivateAccounts(req,res){
    	const accountId = req.params.accountNumber;
    	const accountIndex = Accounts.find(check => check.accountNumber === parseInt(accountId, 10));
    	if(!accountIndex){
-   		return res.status(404).send({error:`Account  with id ${accountId} not found`});
+   		return res.status(404).send({status:404,error:`Account  with id ${accountId} not found`});
    	}
    	const index=Accounts.indexOf(accountIndex);
    	Accounts.splice(index,1);
