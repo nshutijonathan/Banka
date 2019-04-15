@@ -23,7 +23,8 @@ Banka is core banking application that powers banking operations.It is meant to 
 | /api/v1/auth/signin| POST | Sign in |
 | /api/v1/users| GET | Get all users |
 | /api/v1/users/:id| GET | Get specific user |
-
+| /api/v1/users/:id| DELETE| Delete specific user |
+| /api/v1/users/:id| PUT | Update a specific user |
 
 
 ## Contributor
