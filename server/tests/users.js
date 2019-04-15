@@ -41,10 +41,12 @@ describe('get a specific user ',()=>{
 	});
 	it('Should not be able to get specific user ',(done)=>{
 		chai.request(server)
-		.get('/api/v1/users/12345678901//')
+		.get('/api/v1/users/12345678901')
 		.end((err,res)=>{
 			console.log(res.body);
 			res.body.should.be.an('object');
+			res.body.should.have.property("status").eql(404);
+			res.body.should.have.property("error").eql('The user with the id 12345678901 was not found');
 			done();
 		});
 
@@ -68,6 +70,7 @@ describe('create user',()=>{
 		.end((err,res)=>{
 			console.log(res.body);
 			res.body.should.be.an('object');
+			res.body.should.have.property("status").eql(201);
 			done();
 		})
 	})
@@ -129,6 +132,7 @@ describe('delete user',()=>{
 		.end((err,res)=>{
 			console.log(res.body);
 			res.body.should.be.an('object');
+			res.body.should.have.property("message").eql('User with id 1 Successfully deleted!');
 			done();
 		});
 
