@@ -11,6 +11,8 @@ describe('get welcome message',()=>{
 		.end((err,res)=>{
 			console.log(res.body);
 			res.body.should.be.an('object');
+			res.body.should.have.property('status').eql(200);
+			res.body.should.have.property("message").eql("Welcome to Banka!!");
 			done();
 		});
 
