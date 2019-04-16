@@ -18,6 +18,9 @@ body{
   box-shadow: 0 15px 25px rgba(0,0,0,.5);
   border-radius: 10px;
 }
+.body2{
+   background: #fff;
+}
 .box h2{
   margin: 0 0 30px;
   padding: 0;
