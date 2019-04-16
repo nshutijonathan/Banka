@@ -65,7 +65,7 @@ catch(error){
 	}
 static deactivateAccounts(req,res){
     const accId = req.body.accountNumber;
-  const userIndex = Accounts.find(user => user.accountNumber === parseInt(accId, 10));
+  const userIndex = Accounts.filter(user => user.accountNumber === parseInt(accId, 10));
   if(!userIndex){
     return res.status(404).send({error:`accounts  with id ${accId} not found`});
   }
@@ -76,6 +76,7 @@ static deactivateAccounts(req,res){
   userIndex.openingBalance=req.body.openingBalance;
   const accountNumber=req.body.accountNumber
   const status=req.body.status;
+  Accounts[0].status=status;
   return res.status(200).send({
     message:"Successfully updated",
     accountNumber,status

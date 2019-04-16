@@ -45,7 +45,6 @@ describe('debit a bank account',()=>{
 		.send(transactions)
 		.end((err,res)=>{
 			console.log(res.body);
-
 			res.body.should.be.an('object');
 			done();
 		});
