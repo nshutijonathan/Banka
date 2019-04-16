@@ -66,3 +66,10 @@ function delete_account(){
 	}
 }
 
+<<<<<<< HEAD
+=======
+function personal_accounts(){
+	document.getElementById("banka_accounts").style.display = "block";
+
+}
+>>>>>>> 08464eeddb073b84051d781c0ac9b7537e3b2eca
