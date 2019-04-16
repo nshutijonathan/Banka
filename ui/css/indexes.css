@@ -96,12 +96,15 @@ body{
 
 }
 .links{
-  background: #4479BA;
-  color: #FFF;
+  /*background: #4479BA*/;
+  color: #4479BA;
   padding: 8px 12px;
-  text-decoration: none;
   height: 30px;
   width: 300px;
   display: block;
   text-align: center;
+  color: #4479BA;
+  font-weight: bold;
+  transition: 0.4s all;
+  text-decoration: none;
 }
