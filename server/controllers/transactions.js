@@ -65,6 +65,9 @@ catch(error){
 		})
 	}
 	static createTransactionscredit(req,res){
+		try{
+			if(validatetransactions.debit_credit(req,res)){
+
 		const accId = req.params.accountNumber;
         const check=bank_accounts.filter(account => account.accountNumber== accId);
         if(check==false){
@@ -82,7 +85,7 @@ catch(error){
 			id:transactions.length+1,
             createdOn:date,
             type:req.body.type,
-            accountNumber:accId ,
+            accountNumber:accId,
             cashier:req.body.cashier,
 			amount:req.body.amount,
 			oldBalance:req.body.oldBalance,
@@ -90,19 +93,26 @@ catch(error){
 		}
 		transactions.push(data);
 		let id=data.id;
-		let accountNumber=req.params.accountNumber;
+		let accountNumber=data.accountNumber;
 		let amount=data.amount;
 		let cashier=data.cashier;
 		let type=data.type;
 		let newBalance=data.newBalance;
 		return res.status(201).send({
-			status:201,
 			message:"user successfully credited",
 			id,accountNumber,amount,cashier,type,newBalance
 		})
 	}
-
+}
+}
+catch(error){
+  console.log(error);
+    return res.status(400).send({
+      message:error.message
+    })
+   }
 
 	}
+
 }
 export default Transactioncontrollers;
