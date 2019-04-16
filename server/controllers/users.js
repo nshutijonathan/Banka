@@ -79,7 +79,7 @@ class Userscontrollers{
         let lastName=checkmail[0].lastName;
         let email=checkmail[0].email;
        jwt.sign({oneuser},'secretkey',(err,token)=>{
-          return res.status(201).send({
+          return res.status(200).send({
              token,message:"Successfully logged in",id,firstName,lastName,email
              })
 
