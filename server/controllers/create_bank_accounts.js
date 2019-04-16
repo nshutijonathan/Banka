@@ -1,11 +1,14 @@
 import express from 'express';
 import bank_accounts  from '../models/create_bank_accounts';
+import validateaccounts from '../helpers/accounts_validations.js';
 import users_db from '../models/users';
 const users=users_db;
 const Accounts=bank_accounts;
 let date=new Date();
 class BankAccountscontrollers{
 	static createAccount(req,res){
+    try{
+      if (validateaccounts.accounts_creation(req,res)) {
 		const data={
       id:Accounts.length+1,
 			accountNumber:req.body.accountNumber,
@@ -23,6 +26,13 @@ class BankAccountscontrollers{
         
       })
     }
+    let user_accountN=req.body.accountNumber;
+    let check_account=bank_accounts.filter(accountN=>accountN.accountNumber==req.body.accountNumber);
+    if (check_account.length===1) {
+      return res.status(404).send({error:`account  with number ${user_accountN} already exists`
+        
+      })
+    }
     Accounts.push(data);
     let AccountNumber=data.accountNumber;
     let firstName=check[0].firstName;
@@ -34,6 +44,14 @@ class BankAccountscontrollers{
 			message:" account successfully created",
 			AccountNumber,firstName,lastName,email,type,openingBalance
 		})
+}
+}
+catch(error){
+  console.log(error);
+    return res.status(400).send({
+      message:error.message
+    })
+   }
 
 
 	}
