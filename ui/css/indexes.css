@@ -71,10 +71,34 @@ body{
   height: 50px
 
 }
+#sends
+{
+  background: transparent;
+  border:none;
+  outline: none;
+  color: blue;
+  background: white;
+  padding: 5px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 330px;
+  height: 50px
+
+}
  #p{
   margin: 0 0 30px;
   padding: 0;
   color: #fff;
   text-align:left;
 
+}
+.links{
+  background: #4479BA;
+  color: #FFF;
+  padding: 8px 12px;
+  text-decoration: none;
+  height: 30px;
+  width: 300px;
+  display: block;
+  text-align: center;
 }
