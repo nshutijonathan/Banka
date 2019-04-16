@@ -21,6 +21,7 @@ describe('get all bank accounts',()=>{
 		.end((err,res)=>{
 			console.log(res.body);
 			res.body.should.be.an('object');
+
 			done();
 		});
 
@@ -42,7 +43,6 @@ describe('create bank account',()=>{
 		.send(accounts)
 		.end((err,res)=>{
 			console.log(res.body);
-
 			res.body.should.be.an('object');
 			done();
 		});
@@ -82,10 +82,11 @@ describe('delete a bank account',()=>{
 	});
 	it('Should not be able to delete a bank account',(done)=>{
 		chai.request(server)
-		.delete('//api/v1/accounts/123456789ugfds')
+		.delete('/api/v1/accounts/123456789ugfds')
 		.end((err,res)=>{
 			console.log(res.body);
 			res.body.should.be.an('object');
+			res.body.should.have.property("status").eql(404);
 			done();
 		});
 

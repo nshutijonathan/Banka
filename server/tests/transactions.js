@@ -12,6 +12,8 @@ describe('get all transactions',()=>{
 			console.log(res.body);
 			res.body.should.be.an('object');
 			res.body.should.have.property('status').eql(200);
+			res.body.should.have.property('success').eql(true);
+			res.body.should.have.property('message').eql('transactions retrieved successfully');
 			done();
 		});
 
