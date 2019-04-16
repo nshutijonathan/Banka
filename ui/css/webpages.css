@@ -82,19 +82,23 @@ tr:nth-child(even) {
   color:black/*#fff*/;
   height: 50px;
   padding: 40px;
+  position: bottom;
 
 }
 .footer-logo{
   font-size: 32px;
   float: left;
+  position: bottom;
 
 }
 .footer-list{
   float: right;
+  position: bottom;
 
 }
 .footer-list li{
   padding-bottom: 5px;
+  position: bottom;
 }
 .copyrights{
   text-align: center;
@@ -268,4 +272,11 @@ input{
   margin-left: 70px;
   width: 520px;
 
+}
+.create{
+  justify-content: center; 
+  align-items: center;
+}
+#banka_accounts{
+  display: none;
 }
