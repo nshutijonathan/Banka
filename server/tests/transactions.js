@@ -41,7 +41,7 @@ describe('debit a bank account',()=>{
 
 		};
 		 chai.request(server)
-		.post('/api/v1/transactions/debit/:112345678')
+		.post('/api/v1/transactions/debit/112345678')
 		.send(transactions)
 		.end((err,res)=>{
 			console.log(res.body);

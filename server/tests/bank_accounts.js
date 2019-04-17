@@ -48,6 +48,106 @@ describe('create bank account',()=>{
 		});
 
 	});
+	it('Should return bank account is required',(done)=>{
+		const accounts={
+			accountNumber:"",
+			createdOn:date,
+			owner:"1",
+			type:"saving",
+			status:"activated",
+			openingBalance:"300",
+
+		};
+		 chai.request(server)
+		.post('/api/v1/accounts')
+		.send(accounts)
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		});
+
+	});
+	it('Should return owner is required',(done)=>{
+		const accounts={
+			accountNumber:"123456",
+			createdOn:date,
+			owner:"",
+			type:"saving",
+			status:"activated",
+			openingBalance:"300",
+
+		};
+		 chai.request(server)
+		.post('/api/v1/accounts')
+		.send(accounts)
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		});
+
+	});
+	it('Should return type is required',(done)=>{
+		const accounts={
+			accountNumber:"",
+			createdOn:date,
+			owner:"1",
+			type:"",
+			status:"activated",
+			openingBalance:"300",
+
+		};
+		 chai.request(server)
+		.post('/api/v1/accounts')
+		.send(accounts)
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		});
+
+	});
+	it('Should return status  is required',(done)=>{
+		const accounts={
+			accountNumber:"",
+			createdOn:date,
+			owner:"1",
+			type:"saving",
+			status:"",
+			openingBalance:"300",
+
+		};
+		 chai.request(server)
+		.post('/api/v1/accounts')
+		.send(accounts)
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		});
+
+	});
+	it('Should retur opening balance is required',(done)=>{
+		const accounts={
+			accountNumber:"",
+			createdOn:date,
+			owner:"1",
+			type:"saving",
+			status:"activated",
+			openingBalance:"",
+
+		};
+		 chai.request(server)
+		.post('/api/v1/accounts')
+		.send(accounts)
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		});
+
+	});
 	it('Should not be able to create bank account',(done)=>{
 		const accounts={
 			accountNumber:"",
