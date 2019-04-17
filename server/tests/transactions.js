@@ -33,8 +33,8 @@ describe('debit a bank account',()=>{
 	it('Should be able to debit a bank account',(done)=>{
 		const transactions={
 			createdOn:date,
-			type:date,
-			accountNumber:"18299900",
+			type:"saving",
+			accountNumber:"112345678",
 			amount:"2222",
 			oldBalance:"1222233",
 			newBalance:"3000000",
