@@ -50,6 +50,86 @@ describe('debit a bank account',()=>{
 		});
 
 	});
+	it('Should return accountNumber is required',(done)=>{
+		const transactions={
+			createdOn:date,
+			type:date,
+			accountNumber:"18299900",
+			amount:"2222",
+			oldBalance:"1222233",
+			newBalance:"3000000",
+
+		};
+		 chai.request(server)
+		.post('/api/v1/transactions/debit/112345678')
+		.send(transactions)
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		});
+
+	});
+	it('Should return amount is required',(done)=>{
+		const transactions={
+			createdOn:date,
+			type:date,
+			accountNumber:"18299900",
+			amount:"2222",
+			oldBalance:"1222233",
+			newBalance:"3000000",
+
+		};
+		 chai.request(server)
+		.post('/api/v1/transactions/debit/112345678')
+		.send(transactions)
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		});
+
+	});
+	it('Should return oldBalance is required',(done)=>{
+		const transactions={
+			createdOn:date,
+			type:date,
+			accountNumber:"18299900",
+			amount:"2222",
+			oldBalance:"1222233",
+			newBalance:"3000000",
+
+		};
+		 chai.request(server)
+		.post('/api/v1/transactions/debit/112345678')
+		.send(transactions)
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		});
+
+	});
+	it('Should return new is required',(done)=>{
+		const transactions={
+			createdOn:date,
+			type:date,
+			accountNumber:"18299900",
+			amount:"2222",
+			oldBalance:"1222233",
+			newBalance:"3000000",
+
+		};
+		 chai.request(server)
+		.post('/api/v1/transactions/debit/112345678')
+		.send(transactions)
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		});
+
+	});
 	it('Should not able to debit a bank account',(done)=>{
 		const transactions={
 			createdOn:date,
@@ -89,6 +169,86 @@ describe('Credit a bank account',()=>{
 		.end((err,res)=>{
 			console.log(res.body);
 
+			res.body.should.be.an('object');
+			done();
+		});
+
+	});
+	it('Should return accountNumber is required',(done)=>{
+		const transactions={
+			createdOn:date,
+			type:date,
+			accountNumber:"18299900",
+			amount:"2222",
+			oldBalance:"1222233",
+			newBalance:"3000000",
+
+		};
+		 chai.request(server)
+		.post('/api/v1/transactions/debit/112345678')
+		.send(transactions)
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		});
+
+	});
+	it('Should return amount is required',(done)=>{
+		const transactions={
+			createdOn:date,
+			type:date,
+			accountNumber:"18299900",
+			amount:"2222",
+			oldBalance:"1222233",
+			newBalance:"3000000",
+
+		};
+		 chai.request(server)
+		.post('/api/v1/transactions/debit/112345678')
+		.send(transactions)
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		});
+
+	});
+	it('Should return oldBalance is required',(done)=>{
+		const transactions={
+			createdOn:date,
+			type:date,
+			accountNumber:"18299900",
+			amount:"2222",
+			oldBalance:"1222233",
+			newBalance:"3000000",
+
+		};
+		 chai.request(server)
+		.post('/api/v1/transactions/debit/112345678')
+		.send(transactions)
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		});
+
+	});
+	it('Should return new is required',(done)=>{
+		const transactions={
+			createdOn:date,
+			type:date,
+			accountNumber:"18299900",
+			amount:"2222",
+			oldBalance:"1222233",
+			newBalance:"3000000",
+
+		};
+		 chai.request(server)
+		.post('/api/v1/transactions/debit/112345678')
+		.send(transactions)
+		.end((err,res)=>{
+			console.log(res.body);
 			res.body.should.be.an('object');
 			done();
 		});

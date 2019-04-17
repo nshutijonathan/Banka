@@ -50,7 +50,7 @@ describe('create bank account',()=>{
 	});
 	it('Should return bank account is required',(done)=>{
 		const accounts={
-			accountNumber:"",
+			accountNumber:"123455",
 			createdOn:date,
 			owner:"1",
 			type:"saving",
@@ -72,7 +72,7 @@ describe('create bank account',()=>{
 		const accounts={
 			accountNumber:"123456",
 			createdOn:date,
-			owner:"",
+			owner:"1",
 			type:"saving",
 			status:"activated",
 			openingBalance:"300",
@@ -90,10 +90,10 @@ describe('create bank account',()=>{
 	});
 	it('Should return type is required',(done)=>{
 		const accounts={
-			accountNumber:"",
+			accountNumber:"12345",
 			createdOn:date,
 			owner:"1",
-			type:"",
+			type:"staff",
 			status:"activated",
 			openingBalance:"300",
 
@@ -110,11 +110,11 @@ describe('create bank account',()=>{
 	});
 	it('Should return status  is required',(done)=>{
 		const accounts={
-			accountNumber:"",
+			accountNumber:"12345",
 			createdOn:date,
 			owner:"1",
 			type:"saving",
-			status:"",
+			status:"dormant",
 			openingBalance:"300",
 
 		};
@@ -128,14 +128,14 @@ describe('create bank account',()=>{
 		});
 
 	});
-	it('Should retur opening balance is required',(done)=>{
+	it('Should return opening balance is required',(done)=>{
 		const accounts={
-			accountNumber:"",
+			accountNumber:"1234",
 			createdOn:date,
 			owner:"1",
 			type:"saving",
 			status:"activated",
-			openingBalance:"",
+			openingBalance:"3000",
 
 		};
 		 chai.request(server)
