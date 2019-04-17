@@ -17,6 +17,7 @@ describe('get all users',()=>{
 		});
 
 	});
+
 	it('Should not be  able to get all the users',(done)=>{
 		chai.request(server)
 		.get('/api/v1/users/123456')
@@ -74,6 +75,146 @@ describe('create user',()=>{
 			done();
 		})
 	})
+	it('should return email must be in good format',(done)=>{
+		const user={
+			email: 1,
+			firstName:"yva",
+			lastName:"bebe",
+			password:"qwe12@@#",
+			type:"staff",
+			isAdmin:"no"
+
+		};
+		chai.request(server)
+		.post('/api/v1/auth/signup')
+		.send(user)
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			//res.body.should.have.property("status").eql(201);
+			done();
+		})
+	})
+	it('should return email is required',(done)=>{
+		const user={
+			email:"",
+			firstName:"yva",
+			lastName:"bebe",
+			password:"qwe12@@#",
+			type:"staff",
+			isAdmin:"no"
+
+		};
+		chai.request(server)
+		.post('/api/v1/auth/signup')
+		.send(user)
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			//res.body.should.have.property("status").eql(201);
+			done();
+		})
+	})
+	it('should return firstName is required',(done)=>{
+		const user={
+			email:"we@gmail.com",
+			firstName:"",
+			lastName:"bebe",
+			password:"qwe12@@#",
+			type:"staff",
+			isAdmin:"no"
+
+		};
+		chai.request(server)
+		.post('/api/v1/auth/signup')
+		.send(user)
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			//res.body.should.have.property("status").eql(201);
+			done();
+		})
+	})
+	it('should return lastName is required',(done)=>{
+		const user={
+			email:"we@gmail.com",
+			firstName:"mnd",
+			lastName:"",
+			password:"qwe12@@#",
+			type:"staff",
+			isAdmin:"no"
+
+		};
+		chai.request(server)
+		.post('/api/v1/auth/signup')
+		.send(user)
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			//res.body.should.have.property("status").eql(201);
+			done();
+		})
+	})
+	it('should return password is required',(done)=>{
+		const user={
+			email:"we@gmail.com",
+			firstName:"mnd",
+			lastName:"bnm",
+			password:"",
+			type:"staff",
+			isAdmin:"no"
+
+		};
+		chai.request(server)
+		.post('/api/v1/auth/signup')
+		.send(user)
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			//res.body.should.have.property("status").eql(201);
+			done();
+		})
+	})
+	it('should return type is required',(done)=>{
+		const user={
+			email:"we@gmail.com",
+			firstName:"mnd",
+			lastName:"bnm",
+			password:"ghjuudd@#",
+			type:"",
+			isAdmin:"no"
+
+		};
+		chai.request(server)
+		.post('/api/v1/auth/signup')
+		.send(user)
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			//res.body.should.have.property("status").eql(201);
+			done();
+		})
+	})
+	it('should return isAdmin is required',(done)=>{
+		const user={
+			email:"we@gmail.com",
+			firstName:"mnd",
+			lastName:"bnm",
+			password:"ghjuudd@#",
+			type:"tyui",
+			isAdmin:""
+
+		};
+		chai.request(server)
+		.post('/api/v1/auth/signup')
+		.send(user)
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			//res.body.should.have.property("status").eql(201);
+			done();
+		})
+	})
 	it('should not be able to create user',(done)=>{
 		const user={
 			email:"",
@@ -99,6 +240,34 @@ describe('Sign in user ',()=>{
 		const user={
 			email:"nshuti@gmail.com",
 			password:"qwe12@@#"
+		};
+		chai.request(server)
+		.post('/api/v1/auth/signin')
+		.send(user)
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		})
+	})
+	it('should return email is required ',(done)=>{
+		const user={
+			email:"",
+			password:"qwe12@@#"
+		};
+		chai.request(server)
+		.post('/api/v1/auth/signin')
+		.send(user)
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		})
+	})
+	it('should return email is required ',(done)=>{
+		const user={
+			email:"nshu@gmail.com",
+			password:""
 		};
 		chai.request(server)
 		.post('/api/v1/auth/signin')
