@@ -90,7 +90,7 @@ It will install the node_modules which will help you run the project on your loc
 
 ## Run the server
 ```
-> npm dev
+> npm run dev
 ```
 ## Run the test
 ```
