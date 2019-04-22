@@ -3,7 +3,16 @@ import users_db from '../models/users';
 import Userscontrollers from '../controllers/users';
 import BankAccountscontrollers from '../controllers/create_bank_accounts';
 import Transactioncontrollers from '../controllers/transactions';
+import User from '../controllers/usersv2';
+const {create,login,getall,getone}=User;
+const usersv2Router=express.Router();
 const router=express.Router();
+//usersv2 endpoints
+usersv2Router.post('/api/v2/auth/signup',create);
+usersv2Router.post('/api/v2/auth/signin',login);
+usersv2Router.get('/api/v2/users',getall);
+usersv2Router.get('/api/v2/users/:id',getone);
+
 //users endpoints 
 router.get('/api/v1/users',Userscontrollers.getAllusers);
 router.post('/api/v1/auth/signup',Userscontrollers.Usersignup);
@@ -21,4 +30,4 @@ router.delete('/api/v1/accounts/:accountNumber',BankAccountscontrollers.deleteAc
 router.post('/api/v1/transactions/debit/:accountNumber',Transactioncontrollers.createTransactions);
 router.post('/api/v1/transactions/credit/:accountNumber',Transactioncontrollers.createTransactionscredit);
 router.get('/api/v1/transactions',Transactioncontrollers.getAlltransactions);
-export default router;
+export default usersv2Router;
