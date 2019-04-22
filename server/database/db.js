@@ -7,15 +7,15 @@ export const createTables=()=>{
 	email VARCHAR(50) UNIQUE NOT NULL,
 	firstname VARCHAR(25) NOT NULL, 
 	lastname VARCHAR(25) NOT NULL,
-	password VARCHAR(25) NOT NULL,
+	password VARCHAR(250) NOT NULL,
 	type VARCHAR(10) NOT NULL,
-	isadmin VARCHAR(350) NOT NULL
+	isadmin VARCHAR(35) NOT NULL
 	)`;
 	const accounts=`CREATE TABLE IF NOT EXISTS
 	accounts(
     id SERIAL PRIMARY KEY,
-    accountNumber INT NOT NULL,
-    createdOn VARCHAR(40) NOT NULL,
+    accountNumber FLOAT UNIQUE NOT NULL,
+    createdOn FLOAT NOT NULL,
     owner VARCHAR(20) NOT NULL,
     type VARCHAR(10) NOT NULL,
     status VARCHAR(10) NOT NULL,
