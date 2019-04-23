@@ -27,7 +27,7 @@ try{
 	const {rows}=await pool.query(createQuery,values,);
   const token=usershelpers.generateToken(rows[0].id);
   if(type==="staff" && isadmin==="true"){
-  return res.status(201).send({ token ,status:201,'message':"signed up Successfully",email,firstname,lastname,type,isadmin});
+  return res.status(201).send({ token ,status:201,'message':"staff signed up Successfully",email,firstname,lastname,type,isadmin});
 }
   if(type==="admin" && isadmin==="true") {
   return res.status(201).send({token,status:201,'message':"signed up Successfully",email,firstname,lastname,type,isadmin});
