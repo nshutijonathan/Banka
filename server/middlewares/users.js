@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-export const usershelpers= {
+ const usershelpers= {
 
   hashPassword(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8))
@@ -13,8 +13,9 @@ export const usershelpers= {
     const token = jwt.sign({
       userId: id
     },
-      process.env.SECRET, { expiresIn: '5h' }
+      process.env.SECRET, { expiresIn: "48h" }
     );
     return token;
   }
 }
+export default usershelpers;

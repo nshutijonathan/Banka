@@ -6,9 +6,6 @@ class validateaccounts{
 		if(validator.isEmpty(req.body.accountNumber)){
 			throw Error("accountNumber is required")
 		}
-		if(!validator.isNumeric(req.body.accountNumber)){
-			throw Error("accountNumber must be in numbers ");
-		}
 		if(validator.isEmpty(req.body.owner)){
 			throw Error("owner is required")
 		}
