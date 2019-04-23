@@ -11,11 +11,11 @@ const {createaccounts}=accounts;
 const usersv2Router=express.Router();
 const router=express.Router();
 //usersv2 endpoints
-usersv2Router.post('/api/v2/auth/signup',create);
-usersv2Router.post('/api/v2/auth/signin',login);
-usersv2Router.get('/api/v2/users',auth.verifyToken,getall);
-usersv2Router.get('/api/v2/users/:id',auth.verifyToken,getone);
-usersv2Router.delete('/api/v2/users/:id',auth.verifyToken,deleteuser);
+usersv2Router.post('/api/v2/auth/signup/client',create);
+usersv2Router.post('/api/v2/auth/signin/client',login);
+usersv2Router.get('/api/v2/clients',auth.verifyToken,getall);
+usersv2Router.get('/api/v2/clients/:id',auth.verifyToken,getone);
+usersv2Router.delete('/api/v2/clients/:id',auth.verifyToken,deleteuser);
 //Usersv2 create user as staff
 usersv2Router.post('/api/v2/auth/signup/staff',auth.verifyToken,create);
 usersv2Router.post('/api/v2/auth/signin/staff',login);

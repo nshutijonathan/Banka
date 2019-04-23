@@ -33,7 +33,7 @@ try{
   return res.status(201).send({token,status:201,'message':"signed up Successfully",email,firstname,lastname,type,isadmin});
 }
 else{
-  res.status(201).send({token,status:201,'message':"signed up Successfully",email,firstname,lastname,type,isadmin});
+  res.status(201).send({status:201,data:{token,'message':"signed up Successfully",email,firstname,lastname}});
 }
 }
 }
@@ -85,8 +85,7 @@ async login(req, res) {
         const token=usershelpers.generateToken(rows[0].id);
 		return res.status(200).send({
 			status:200,
-			token,
-			message:"Successfully Logged in"
+      data:{token,message:"Successfully Logged in"}
 
 		})
       }
