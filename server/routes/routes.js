@@ -13,11 +13,11 @@ const router=express.Router();
 //usersv2 endpoints
 usersv2Router.post('/api/v2/auth/signup',create);
 usersv2Router.post('/api/v2/auth/signin',login);
-usersv2Router.get('/api/v2/users',getall);
-usersv2Router.get('/api/v2/users/:id',getone);
+usersv2Router.get('/api/v2/users',auth.verifyToken,getall);
+usersv2Router.get('/api/v2/users/:id',auth.verifyToken,getone);
 usersv2Router.delete('/api/v2/users/:id',auth.verifyToken,deleteuser);
 //accountsv2 endpoints
-usersv2Router.post('/api/v2/accounts',createaccounts);
+usersv2Router.post('/api/v2/accounts',auth.verifyToken,createaccounts);
 //users endpoints 
 router.get('/api/v1/users',Userscontrollers.getAllusers);
 router.post('/api/v1/auth/signup',Userscontrollers.Usersignup);

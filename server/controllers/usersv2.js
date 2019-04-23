@@ -27,13 +27,13 @@ try{
 	const {rows}=await pool.query(createQuery,values,);
   const token=usershelpers.generateToken(rows[0].id);
   if(type==="staff" && isadmin==="true"){
-  return res.status(201).send({ token ,email,firstname,lastname,password,type,isadmin});
+  return res.status(201).send({ token ,status:201,'message':"signed up Successfully",email,firstname,lastname,type,isadmin});
 }
   if(type==="admin" && isadmin==="true") {
-  return res.status(201).send({ token ,email,firstname,lastname,password,type,isadmin});
+  return res.status(201).send({token,status:201,'message':"signed up Successfully",email,firstname,lastname,type,isadmin});
 }
 else{
-  res.status(201).send({email,firstname,lastname,password})
+  res.status(201).send({token,status:201,'message':"signed up Successfully",email,firstname,lastname,type,isadmin});
 }
 }
 }
@@ -83,8 +83,8 @@ async login(req, res) {
       }
       else{
         const token=usershelpers.generateToken(rows[0].id);
-		return res.status(201).send({
-			status:201,
+		return res.status(200).send({
+			status:200,
 			token,
 			message:"Successfully Logged in"
 
@@ -121,6 +121,7 @@ async getone(req,res){
       if (rows.length > 0) {
         return res.status(200).json({
           status: 200,
+          message:"User retrieved Successfully",
           data: rows[0],
         });
     }
