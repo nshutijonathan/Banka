@@ -1,14 +1,13 @@
 import pool from '../database/connect';
 import jwt from 'jsonwebtoken';
 import validateUser from '../helpers/validations';
-import {usershelpers} from '../middlewares/users';
+import usershelpers from '../middlewares/users';
 const User={
 	 async create(req, res) {
 	 	const hashpassword=usershelpers.hashPassword(req.body.password);
 	 	const createQuery=`INSERT INTO 
 users(email,firstname,lastname,password,type,isadmin)
 VALUES($1,$2,$3,$4,$5,$6)returning *`;
-
 const values=[
 req.body.email,
 req.body.firstName,
@@ -25,15 +24,17 @@ let type=req.body.type;
 let isadmin=req.body.isAdmin;
 try{
 	if(validateUser.validatesignup(req,res)){
-	const {rows}=await pool.query(createQuery,values);
-	jwt.sign({values},'secretkey',(err,token)=>{
-		return res.status(201).send({
-			status:201,
-			token,
-			user:{email,firstname,lastname,password,type,isadmin}
-
-		})
-	})
+	const {rows}=await pool.query(createQuery,values,);
+  const token=usershelpers.generateToken(rows[0].id);
+  if(type==="staff" && isadmin==="true"){
+  return res.status(201).send({ token ,email,firstname,lastname,password,type,isadmin});
+}
+  if(type==="admin" && isadmin==="true") {
+  return res.status(201).send({ token ,email,firstname,lastname,password,type,isadmin});
+}
+else{
+  res.status(201).send({email,firstname,lastname,password})
+}
 }
 }
 catch(error) {
@@ -81,14 +82,13 @@ async login(req, res) {
         });
       }
       else{
-      	jwt.sign({values},'secretkey',(err,token)=>{
+        const token=usershelpers.generateToken(rows[0].id);
 		return res.status(201).send({
 			status:201,
 			token,
 			message:"Successfully Logged in"
 
 		})
-	})
       }
       
     } 
@@ -135,6 +135,20 @@ async getone(req,res){
 		return res.status(401).send({message:error.message})
 	}
 
+},
+async deleteuser(req,res){
+  const user_id=req.params.id;
+  const deletequery='DELETE FROM users WHERE id=$1 returning *';
+  try{
+    const {rows}=await pool.query(deletequery,[user_id]);
+    if (!rows[0]) {
+      return res.status(404).send({status:401,'error': 'user not found'});
+    }
+    else {return res.status(200).send({status:200,message:`user with id ${user_id} Successfully deleted`});}
+  }
+  catch(error){
+    return res.status(400).send({message:error.message});
+  }
 }
 }
 export default User

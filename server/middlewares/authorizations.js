@@ -1,14 +1,29 @@
-const getToken=(req,res,next)=>{
-	const bearerHeader=req.headers.authorization;
-	if(typeof bearerHeader==='undefined'){
-		return res.status(401).send({
-			status:401,
-			error:"Forbidden a token must  be provided"
-		})
+import jwt from 'jsonwebtoken';
+import pool from '../database/connect';
+const auth={
+	async verifyToken(req,res,next){
+		const token=req.headers['x-access-token'];
+		if (!token) {
+			return res.status(400).send({ 'message': ' Forbidden Token is not provided' });
+		}
+		try{
+			const decoded=await jwt.verify(token,process.env.SECRET);
+			const text='SELECT * FROM users WHERE id=$1';
+			const {rows}=await pool.query(text,[decoded.userId]);
+			if (!rows[0]) {
+				return res.status(400).send({ 'message': 'the user this id not found' });
+			}
+			req.user={id:decoded.userId};
+			next();
+		}
+		catch(error){
+			return res.status(400).send(error);
+			if (error) {
+				console.log(error);
+			}
+
+		}
+
 	}
-	const bearerToken=bearerHeader.split('');
-	const token=bearerToken([1]);
-	req.token=token;
-	next();
 }
-export default getToken;
+export default auth;

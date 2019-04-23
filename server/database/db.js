@@ -15,11 +15,13 @@ export const createTables=()=>{
 	accounts(
     id SERIAL PRIMARY KEY,
     accountNumber FLOAT UNIQUE NOT NULL,
-    createdOn FLOAT NOT NULL,
-    owner VARCHAR(20) NOT NULL,
+    createdOn VARCHAR(30) NOT NULL,
+    owner SERIAL NOT NULL,
     type VARCHAR(10) NOT NULL,
     status VARCHAR(10) NOT NULL,
-    balance INT  NOT NULL
+    balance INT  NOT NULL,
+    FOREIGN KEY (owner) REFERENCES users(id) ON DELETE CASCADE
+
 	)`;
 	const transactions=`CREATE TABLE IF NOT EXISTS
 	transactions(
