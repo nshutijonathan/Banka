@@ -11,7 +11,7 @@ const auth={
 			const text='SELECT * FROM users WHERE id=$1';
 			const {rows}=await pool.query(text,[decoded.userId]);
 			if (!rows[0]) {
-				return res.status(400).send({ 'message': 'the user this id not found' });
+				return res.status(400).send({ 'message': 'the user with this id not found' });
 			}
 			req.user={id:decoded.userId};
 			next();

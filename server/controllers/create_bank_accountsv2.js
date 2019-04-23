@@ -1,6 +1,7 @@
 import pool from '../database/connect';
 import jwt from 'jsonwebtoken';
 import  validateaccounts from '../helpers/accounts_validations';
+let gen_account=Math.floor(Math.random() * 1000000000);
 let date=new Date();
 const accounts={
 	async createaccounts(req,res){
@@ -39,7 +40,7 @@ try{
 		return res.status(201).send({
 			status:201,
 			message:"account successfully created",
-			accountNumber,
+			gen_account,
 			type,
             firstname: owner.firstname,
             lastname: owner.firstname,
