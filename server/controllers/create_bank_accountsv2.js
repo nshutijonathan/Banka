@@ -38,6 +38,7 @@ try{
 		const {rows}=await pool.query(createQuery,values);
 		return res.status(201).send({
 			status:201,
+			message:"account successfully created",
 			accountNumber,
 			type,
             firstname: owner.firstname,
