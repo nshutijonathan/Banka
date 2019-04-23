@@ -67,4 +67,17 @@ export const dropTables=()=>{
 
 	});
 };
+export const indexadmin=()=>{
+	const admin=`INSERT INTO users(email,firstName, lastName,password, type, isadmin)
+	VALUES ('nshuti@gmail.com','nshuti','jonathan','nshuti12345','admin','true') ON CONFLICT DO NOTHING returning *`;
+	pool.query(admin)
+	.then((res)=>{
+		console.log(res);
+		pool.end();
+	})
+	.catch((err)=>{
+		console.log(err);
+		pool.end();
+	});
+}
 require('make-runnable');
