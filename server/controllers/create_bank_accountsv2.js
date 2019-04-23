@@ -7,6 +7,8 @@ const accounts={
 		const createQuery=`INSERT INTO 
 accounts(accountNumber,createdOn,owner,type,status,balance)
 VALUES($1,$2,$3,$4,$5,$6)returning *`;
+const owner_id=req.body.owner;
+const query_owner=`SELECT firstname,lastname,email FROM users WHERE id=$1`;
 const values=[
 req.body.accountNumber,
 date,
@@ -19,14 +21,13 @@ let accountNumber=req.body.accountNumber;
 let type=req.body.type;
 let balance=req.body.openingBalance
 try{
+
 	if (validateaccounts.accounts_creation(req,res)) {
 		const {rows}=await pool.query(createQuery,values);
-		const {rowss}=await pool.query(query_owner);
 		return res.status(201).send({
 			status:201,
 			accountNumber,
-			type,
-			rowss
+			type
 
 		
 		});
