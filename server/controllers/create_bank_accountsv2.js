@@ -12,7 +12,7 @@ const accounts={
 		const createQuery=`INSERT INTO 
 accounts(accountNumber,createdOn,owner,type,status,balance)
 VALUES($1,$2,$3,$4,$5,$6)returning *`;
-const owner_id=req.user.id;
+const owner_id=req.body.owner;
 const query_owner=`SELECT firstname,lastname,email FROM users WHERE id=$1`;
 const values=[
 accountNumber,
