@@ -12,7 +12,8 @@ usersv2Router.post('/api/v2/auth/signup',create);
 usersv2Router.post('/api/v2/auth/signin',login);
 usersv2Router.get('/api/v2/users',getall);
 usersv2Router.get('/api/v2/users/:id',getone);
-usersv2Router.delete('/api/v2/users/:id',auth.verifyToken,deleteuser);
+usersv2Router.delete('/api/v2/users/:id',deleteuser);
+//usersv2Router.delete('/api/v2/users/:id',auth.verifyToken,deleteuser);
 //accountsv2 endpoints
 usersv2Router.post('/api/v2/accounts',createaccounts);
 
