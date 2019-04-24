@@ -3,10 +3,12 @@ import uuidv4 from 'uuid/v4';
 import jwt from 'jsonwebtoken';
 import  validateaccounts from '../helpers/accounts_validations';
 /*let accountNumber=Math.floor((Math.random() * 10000000000)+1);*/
-let accountNumber= uuidv4.v4();
+//let accountNumber=Math.random().toString().slice(2).substr(0,9);
+//let accountNumber2= uuidv4();
 let date=new Date();
 const accounts={
 	async createaccounts(req,res){
+    let accountNumber=Math.floor((Math.random() * 10000000000)+1);
 		const createQuery=`INSERT INTO 
 accounts(accountNumber,createdOn,owner,type,status,balance)
 VALUES($1,$2,$3,$4,$5,$6)returning *`;
@@ -39,7 +41,9 @@ catch(error){
 try{
 
 	if (validateaccounts.accounts_creation(req,res)) {
-		const {rows}=await pool.query(createQuery,values);
+		const {rows,error}=await pool.query(createQuery,values);
+    console.log(error);
+    console.log(rows);
 		return res.status(201).send({
 			status:201,
 			message:"account successfully created",
@@ -54,6 +58,7 @@ try{
 
 	}
 	catch(error) {
+    console.log(error);
       if (error.routine === '_bt_check_unique') {
         return res.status(401).send({
            status: 401,

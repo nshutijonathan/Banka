@@ -25,7 +25,13 @@ let isadmin=req.body.isAdmin;
 try{
 	if(validateUser.validatesignup(req,res)){
 	const {rows}=await pool.query(createQuery,values,);
-  const token=usershelpers.generateToken(rows[0].id);
+
+  let type = rows[0].type;
+
+  if (rows[0].isadmin == 'true') {
+    type = 'admin';
+  }
+  const token=usershelpers.generateToken(rows[0].id, type);
   if(type==="staff" && isadmin==="true"){
   return res.status(201).send({ token ,status:201,'message':"staff signed up Successfully",email,firstname,lastname,type,isadmin});
 }
@@ -82,7 +88,14 @@ async login(req, res) {
         });
       }
       else{
-        const token=usershelpers.generateToken(rows[0].id);
+
+        let type = rows[0].type;
+
+        if (rows[0].isadmin == 'true') {
+          type = 'admin';
+        }
+
+        const token=usershelpers.generateToken(rows[0].id, type);
 		return res.status(200).send({
 			status:200,
       data:{token,message:"Successfully Logged in"}
