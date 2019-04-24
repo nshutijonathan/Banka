@@ -1,6 +1,4 @@
 import  validator from 'validator';
-import bank_accounts from '../models/create_bank_accounts';
-
 class validateaccounts{
 	static accounts_creation(req,res){
 		/*if(validator.isEmpty(req.body.accountNumber)){
