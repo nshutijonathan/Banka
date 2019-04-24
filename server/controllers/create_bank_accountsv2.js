@@ -121,6 +121,29 @@ async deletebankaccount(req,res){
     console.log(error);
     return res.status(400).send({message:error.message});
   }
+},
+async updatebankaccount(req,res){
+  const account_id=req.params.accountnumber;
+  const updatequery='UPDATE accounts SET status = $1 WHERE accountnumber = $2';
+  try{
+    const {rows}=await pool.query( updatequery,[req.body.status,account_id]);
+    const { status } = req.body.status;
+    return res.status(200).send({
+      status:200,
+      message:"Updation successfully",
+      data:{
+        account_id, status 
+      }
+    })
+  }
+  catch(error){
+    console.log(error);
+    return res.status(400).send({
+      status:400,
+      message:error.message
+    })
+  }
+  
 }
 }
 export default accounts;
