@@ -8,8 +8,8 @@ const {createaccounts}=accounts;
 const {createstaff,loginstaff}=staff;
 const usersv2Router=express.Router();
 //usersv2 endpoints
-usersv2Router.post('/api/v2/auth/signup/client',create);
-usersv2Router.post('/api/v2/auth/signin/client',login);
+usersv2Router.post('/api/v2/auth/signup',create);
+usersv2Router.post('/api/v2/auth/signin',login);
 usersv2Router.get('/api/v2/clients',auth.verifyToken,getall);
 usersv2Router.get('/api/v2/clients/:id',auth.verifyToken,getone);
 usersv2Router.delete('/api/v2/clients/:id',auth.verifyToken,deleteuser);

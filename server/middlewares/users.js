@@ -9,13 +9,20 @@ import jwt from 'jsonwebtoken';
   comparePassword(hashPassword, password) {
     return bcrypt.compareSync(password, hashPassword);
   },
-  generateToken(id, type) {
-    const token = jwt.sign({
+  generateToken(id, type){
+
+    let data = {
       userId: id,
-      type
+      type: type
+    }
+    const token = jwt.sign({
+      data
     },
       process.env.SECRET, { expiresIn: "48h" }
     );
+
+    console.log(data);
+
     return token;
   }
 }
