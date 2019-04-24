@@ -25,7 +25,7 @@ req.body.openingBalance
 /*let accountNumber=req.body.accountNumber;*/
 let type=req.body.type;
 let status=req.body.status;
-let balance=req.body.openingBalance;
+let openingBalance=req.body.openingBalance;
 
 let owner = {};
 try{
@@ -51,7 +51,8 @@ try{
 			type,
       firstname: owner.firstname,
       lastname: owner.firstname,
-      email:owner.email
+      email:owner.email,
+      openingBalance
 		
 		});
 	}
@@ -75,6 +76,20 @@ try{
       	
 }
 
+},
+async Getallaccounts(req,res){
+try{
+    const text='SELECT * FROM accounts';
+      const {rows}=await pool.query(text);
+      return res.status(200).send({
+          status: 200,
+          message:"accounts retrieved Successfully",
+          rows
+      });
+  }
+  catch(error) {
+      return res.status(400).send({message:error.message})
+    }
 }
 }
 export default accounts;

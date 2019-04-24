@@ -157,7 +157,8 @@ async getone(req,res){
         });
     }
 
-      else {return res.json({
+      else {
+        return res.json({
         status: 204,
         error:`user with id ${req.params.id} not found..`
       });
