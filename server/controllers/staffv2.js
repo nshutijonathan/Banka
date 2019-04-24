@@ -2,6 +2,7 @@ import pool from '../database/connect';
 import jwt from 'jsonwebtoken';
 import validateUser from '../helpers/validations';
 import usershelpers from '../middlewares/users';
+
 const staff={
 	 async createstaff(req, res) {
 	 	const hashpassword=usershelpers.hashPassword(req.body.password);
