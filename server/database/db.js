@@ -14,7 +14,7 @@ export const createTables=()=>{
 	const accounts=`CREATE TABLE IF NOT EXISTS
 	accounts(
     id SERIAL PRIMARY KEY,
-    accountNumber  UUID UNIQUE NOT NULL,
+    accountNumber VARCHAR(250) UNIQUE NOT NULL,
     createdOn VARCHAR(30) NOT NULL,
     owner SERIAL NOT NULL,
     type VARCHAR(10) NOT NULL,
