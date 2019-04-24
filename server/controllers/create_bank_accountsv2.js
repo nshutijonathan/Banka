@@ -105,6 +105,22 @@ async getoneaccount(req,res){
   catch(error){
     return res.status(400).send({message:error.message});
   }
+},
+async deletebankaccount(req,res){
+  const account_id=req.params.accountnumber;
+  const deletequery='DELETE FROM accounts WHERE accountnumber=$1 returning *';
+  try{
+    const {rows}=await pool.query( deletequery,[account_id]);
+    if (!rows[0]) {
+      return res.status(404).send({status:401,'error': 'account not found'});
+    }
+    else if (rows.length > 0){return res.status(200).send({status:200,message:`account  with accountnumber ${account_id} Successfully deleted`})
+  }
+}
+  catch(error){
+    console.log(error);
+    return res.status(400).send({message:error.message});
+  }
 }
 }
 export default accounts;
