@@ -29,7 +29,7 @@ export const createTables=()=>{
     createdOn VARCHAR(20) NOT NULL,
     type VARCHAR(20) NOT NULL,
     accountNumber INT NOT NULL,
-    cashier VARCHAR(20) NOT NULL,
+    cashier VARCHAR(20) REFERENCES users(id) NOT NULL,
     amount INT NOT NULL,
     oldBalance INT NOT NULL,
     newBalance INT NOT NULL
