@@ -1,7 +1,9 @@
 import pool from '../database/connect';
+import uuidv4 from 'uuid/v4';
 import jwt from 'jsonwebtoken';
 import  validateaccounts from '../helpers/accounts_validations';
-let gen_account=Math.floor(Math.random() * 1000000000);
+/*let accountNumber=Math.floor((Math.random() * 10000000000)+1);*/
+let accountNumber= uuidv4.v4();
 let date=new Date();
 const accounts={
 	async createaccounts(req,res){
@@ -11,16 +13,17 @@ VALUES($1,$2,$3,$4,$5,$6)returning *`;
 const owner_id=req.user.id;
 const query_owner=`SELECT firstname,lastname,email FROM users WHERE id=$1`;
 const values=[
-req.body.accountNumber,
+accountNumber,
 date,
 req.body.owner,
 req.body.type,
 req.body.status,
 req.body.openingBalance
 ];
-let accountNumber=req.body.accountNumber;
+/*let accountNumber=req.body.accountNumber;*/
 let type=req.body.type;
-let balance=req.body.openingBalance
+let status=req.body.status;
+let balance=req.body.openingBalance;
 
 let owner = {};
 try{
@@ -40,11 +43,11 @@ try{
 		return res.status(201).send({
 			status:201,
 			message:"account successfully created",
-			gen_account,
+			accountNumber,
 			type,
-            firstname: owner.firstname,
-            lastname: owner.firstname,
-            email:owner.email
+      firstname: owner.firstname,
+      lastname: owner.firstname,
+      email:owner.email
 		
 		});
 	}

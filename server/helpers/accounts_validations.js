@@ -3,24 +3,21 @@ import bank_accounts from '../models/create_bank_accounts';
 
 class validateaccounts{
 	static accounts_creation(req,res){
-		if(validator.isEmpty(req.body.accountNumber)){
+		/*if(validator.isEmpty(req.body.accountNumber)){
 			throw Error("accountNumber is required")
-		}
+		}*/
 		if(validator.isEmpty(req.body.owner)){
 			throw Error("owner is required")
 		}
 		if(validator.isEmpty(req.body.type)){
 			throw Error("type is required");
 		}
-		if(validator.isEmpty(req.body.status)){
-			throw Error("status is required");
-		}
 		if(validator.isEmpty(req.body.openingBalance)){
 			throw Error("openingBalance is required");
 		}
-		if(!validator.isNumeric(req.body.openingBalance)){
+		/*if(!validator.isNumeric(req.body.openingBalance)){
 			throw Error("openingBalance must be in numbers ");
-		}
+		}*/
 		else{
 
 		}
