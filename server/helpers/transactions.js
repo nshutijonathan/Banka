@@ -1,6 +1,4 @@
 import  validator from 'validator';
-import transactions from '../models/transactions';
-
 class validatetransactions{
 	static debit_credit(req,res){
 		if(validator.isEmpty(req.body.type)){

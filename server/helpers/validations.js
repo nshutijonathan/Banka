@@ -1,5 +1,4 @@
 import validator from 'validator';
-import user_db from '../models/users';
 class validateUser{
 	static validatesignup(req,res){
 		const allusers=user_db;
