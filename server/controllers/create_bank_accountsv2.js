@@ -11,7 +11,7 @@ VALUES($1,$2,$3,$4,$5,$6)returning *`;
 const owner_id=req.user.id;
 const query_owner=`SELECT firstname,lastname,email FROM users WHERE id=$1`;
 const values=[
-req.body.accountNumber,
+gen_account,
 date,
 req.body.owner,
 req.body.type,
