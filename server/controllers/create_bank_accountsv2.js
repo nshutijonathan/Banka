@@ -90,6 +90,21 @@ try{
   catch(error) {
       return res.status(400).send({message:error.message})
     }
+},
+async getoneaccount(req,res){
+  const account_id=req.params.accountnumber;
+  const getquery='SELECT * FROM accounts WHERE accountnumber=$1';
+  try{
+    const {rows}=await pool.query(getquery,[account_id]);
+    if (!rows[0]) {
+      return res.status(404).send({status:401,'error': 'account not found'});
+    }
+    else if (rows.length > 0){return res.status(200).send({status:200,message:`account  with accountnumber ${account_id} Successfully retrieved`,data:rows[0]})
+  }
+}
+  catch(error){
+    return res.status(400).send({message:error.message});
+  }
 }
 }
 export default accounts;
