@@ -75,3 +75,48 @@ describe('User sign in',()=>{
 
 	});
 });
+describe('should retrieve all users',()=>{
+	it('should not be able to retrieve all users',(done)=>{
+		chai.request(server)
+		.get('/api/v2/users')
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		});
+
+	});
+	it('should not be able to retrieve all users',(done)=>{
+		chai.request(server)
+		.get('/api/v2/users//')
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		});
+
+	});
+});
+describe('should retrieve specific user',()=>{
+	it('should not be able to retrieve specific user',(done)=>{
+		chai.request(server)
+		.get('/api/v2/users/1')
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		});
+
+	});
+	it('should  be able to retrieve specific user',(done)=>{
+		chai.request(server)
+		.get('/api/v2/users/:300000')
+		.end((err,res)=>{
+			console.log(res.body);
+			res.body.should.be.an('object');
+			done();
+		});
+
+	});
+});
+

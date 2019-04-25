@@ -1,7 +1,7 @@
 import pool from './connect';
-
-export const createTables=()=>{
-	const users=`CREATE TABLE IF NOT EXISTS
+import bcrypt from 'bcrypt';
+export const createTables = () => {
+    const users = `CREATE TABLE IF NOT EXISTS
 	users(
 	id SERIAL PRIMARY KEY,
 	email VARCHAR(50) UNIQUE NOT NULL,
@@ -11,7 +11,7 @@ export const createTables=()=>{
 	type VARCHAR(10) NOT NULL,
 	isadmin VARCHAR(35) NOT NULL
 	)`;
-	const accounts=`CREATE TABLE IF NOT EXISTS
+    const accounts = `CREATE TABLE IF NOT EXISTS
 	accounts(
     id SERIAL PRIMARY KEY,
     accountNumber VARCHAR(250) UNIQUE NOT NULL,
@@ -23,7 +23,7 @@ export const createTables=()=>{
     FOREIGN KEY (owner) REFERENCES users(id) ON DELETE CASCADE
 
 	)`;
-	const transactions=`CREATE TABLE IF NOT EXISTS
+    const transactions = `CREATE TABLE IF NOT EXISTS
 	transactions(
     id SERIAL PRIMARY KEY,
     createdOn VARCHAR(20) NOT NULL,
@@ -34,50 +34,43 @@ export const createTables=()=>{
     oldBalance INT NOT NULL,
     newBalance INT NOT NULL
 	)`;
-	const queries=`${users}; ${accounts}; ${transactions}`;
-    pool.query(queries)
-    .then((res)=>{
-    	console.log(res);
-    	pool.end();
-    })
-    .catch((err)=>{
-    	console.log(err);
-    	pool.end();
+    const queries = `${users}; ${accounts}; ${transactions}`;
+    pool.query(queries).then((res) => {
+        console.log(res);
+        pool.end();
+    }).catch((err) => {
+        console.log(err);
+        pool.end();
     });
-
 };
-export const dropTables=()=>{
-	const users='DROP TABLE IF EXISTS users';
-	const accounts='DROP TABLE IF EXISTS accounts';
-	const transactions='DROP TABLE IF EXISTS transactions'
-	pool.query(users);
-	pool.query(accounts);
-	pool.query(transactions)
-	.then((res)=>{
-		console.log(res);
-		pool.end();
-	})
-	.catch((err)=>{
-		console.log(err);
-		pool.end();
-	});
-	pool.on('remove',()=>{
-		console.log('client removed');
-		process.exit(0);
-
-	});
+export const dropTables = () => {
+    const users = 'DROP TABLE IF EXISTS users';
+    const accounts = 'DROP TABLE IF EXISTS accounts';
+    const transactions = 'DROP TABLE IF EXISTS transactions'
+    pool.query(users);
+    pool.query(accounts);
+    pool.query(transactions).then((res) => {
+        console.log(res);
+        pool.end();
+    }).catch((err) => {
+        console.log(err);
+        pool.end();
+    });
+    pool.on('remove', () => {
+        console.log('client removed');
+        process.exit(0);
+    });
 };
-export const indexadmin=()=>{
-	const admin=`INSERT INTO users(email,firstName, lastName,password, type, isadmin)
-	VALUES ('nshuti@gmail.com','nshuti','jonathan','nshuti12345','admin','true') ON CONFLICT DO NOTHING returning *`;
-	pool.query(admin)
-	.then((res)=>{
-		console.log(res);
-		pool.end();
-	})
-	.catch((err)=>{
-		console.log(err);
-		pool.end();
-	});
+export const indexadmin = () => {
+    const hash=bcrpt.hashSync('nshuti12345',8);
+    const admin = `INSERT INTO users(email,firstName, lastName,password, type, isadmin)
+	VALUES ('nshuti@gmail.com','nshuti','jonathan',hash,'admin','true') ON CONFLICT DO NOTHING returning *`;
+    pool.query(admin).then((res) => {
+        console.log(res);
+        pool.end();
+    }).catch((err) => {
+        console.log(err);
+        pool.end();
+    });
 }
 require('make-runnable');
