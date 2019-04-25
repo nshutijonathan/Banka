@@ -134,7 +134,8 @@ VALUES($1,$2,$3,$4,$5,$6)returning *`;
                         id: rows[0].id,
                         firstname: rows[0].firstname,
                         lastname: rows[0].lastname,
-                        email: rows[0].email
+                        email: rows[0].email,
+                        isadmin:rows[0].isadmin
                     }
                 })
             }

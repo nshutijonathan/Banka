@@ -62,9 +62,9 @@ export const dropTables = () => {
     });
 };
 export const indexadmin = () => {
-    const hash=bcrpt.hashSync('nshuti12345',8);
+    const hash=bcrypt.hashSync('nshuti12345',8);
     const admin = `INSERT INTO users(email,firstName, lastName,password, type, isadmin)
-	VALUES ('nshuti@gmail.com','nshuti','jonathan',hash,'admin','true') ON CONFLICT DO NOTHING returning *`;
+	VALUES ('nshuti@gmail.com','nshuti','jonathan','`+hash+`','admin','true') ON CONFLICT DO NOTHING returning *`;
     pool.query(admin).then((res) => {
         console.log(res);
         pool.end();
