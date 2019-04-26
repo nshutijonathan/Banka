@@ -128,14 +128,14 @@ VALUES($1,$2,$3,$4,$5,$6)returning *`;
                 }
                 const token = usershelpers.generateToken(rows[0].id, rows[0].type);
                 return res.status(200).send({
-                    status: 201,
+                    status: 200,
                     data: {
                         token,
                         id: rows[0].id,
                         firstname: rows[0].firstname,
                         lastname: rows[0].lastname,
                         email: rows[0].email,
-                        isadmin:rows[0].isadmin
+                        isadmin: rows[0].isadmin
                     }
                 })
             }
