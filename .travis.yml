@@ -1,16 +1,22 @@
-language: node_js
 node_js:
-  - "stable"
-script:
-  -npm install 
-  - npm  test
-after_success:
-  npm run coverage
+ - "10"
+
 services:
  - postgresql
 
 before_install:
  - psql -c 'create database testdatabase' -U postgres
+
+after_script:
+ - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
+script:
+ - npm install
+ - npm run test
+
+after_success:
+ - npm run coverage
+
 cache:
  directories:
    - "node_modules"
