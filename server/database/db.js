@@ -25,8 +25,8 @@ export const createTables = () => {
 	)`;
     const transactions = `CREATE TABLE IF NOT EXISTS
 	transactions(
-    id SERIAL PRIMARY KEY,
-    createdOn VARCHAR(20) NOT NULL,
+    transactionid SERIAL PRIMARY KEY,
+    createdOn VARCHAR(30) NOT NULL,
     type VARCHAR(20) NOT NULL,
     accountNumber INT NOT NULL,
     cashier VARCHAR(20) NOT NULL,
@@ -72,5 +72,18 @@ export const indexadmin = () => {
         console.log(err);
         pool.end();
     });
-}
+};
+export const indexstaff = () => {
+    const hash=bcrypt.hashSync('staff12345',8);
+    const staff = `INSERT INTO users(email,firstName, lastName,password, type, isadmin)
+    VALUES ('staff@gmail.com','nshuti','jonathan','`+hash+`','staff','true') ON CONFLICT DO NOTHING returning *`;
+    pool.query(staff).then((res) => {
+        console.log(res);
+        pool.end();
+    }).catch((err) => {
+        console.log(err);
+        pool.end();
+    });
+};
+
 require('make-runnable');

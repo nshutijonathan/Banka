@@ -2,6 +2,15 @@ language: node_js
 node_js:
   - "stable"
 script:
+  -npm install 
   - npm  test
 after_success:
   npm run coverage
+services:
+ - postgresql
+
+before_install:
+ - psql -c 'create database testdatabase' -U postgres
+cache:
+ directories:
+   - "node_modules"

@@ -11,15 +11,19 @@ const auth = {
         try {
             const decoded = await jwt.verify(token, process.env.SECRET);
             console.log(decoded.data.userId);
+            console.log(decoded.data.type);
             const text = 'SELECT * FROM users WHERE id=$1';
-            const { rows } = await pool.query(text, [decoded.data.userId]);
+            const {
+                rows
+            } = await pool.query(text, [decoded.data.userId],[decoded.data.type]);
             if (!rows[0]) {
                 return res.status(400).send({
-                    'message': 'the user with this id not found'
+                    'message': 'not found'
                 });
             }
             req.user = {
-                id: decoded.userId
+                id: decoded.userId,
+                type: decoded.type
             };
             next();
         } catch (error) {
@@ -29,5 +33,38 @@ const auth = {
             }
         }
     }
+    /*async verifyToken2(req, res, next) {
+        const token = req.headers['x-access-token'];
+        if (!token) {
+            return res.status(400).send({
+                'message': ' Forbidden Token is not provided'
+            });
+        }
+        try {
+            const decoded = await jwt.verify(token, process.env.SECRET);
+            console.log(decoded.data.type);
+            const text = 'SELECT * FROM users WHERE id=$1';
+            const {
+                rows
+            } = await pool.query(text, [decoded.data.type]);
+            if (!rows[0]) {
+                return res.status(400).send({
+                    'message': 'not found'
+                });
+            }
+            req.user = {
+                type: decoded.type
+            };
+            if (data.type!==staff) {
+                return res.status(403).send({status:403,message:"please you must be a staff"});
+            }
+            next();
+        } catch (error) {
+            return res.status(400).send(error);
+            if (error) {
+                console.log(error);
+            }
+        }
+    }*/
 }
 export default auth;
