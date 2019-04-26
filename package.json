@@ -4,7 +4,7 @@
   "description": "Banka is core banking application that powers banking operations.It is meant to support a single bank.",
   "main": "server.js",
   "scripts": {
-    "test": "SET NODE_ENV=testing && npm run create && nyc --reporter=html --reporter=text mocha --require @babel/register --timeout 10000 --exit server/tests/*.js",
+    "test": "NODE_ENV=testing && npm run create && nyc --reporter=html --reporter=text mocha --require @babel/register --timeout 10000 --exit server/tests/*.js",
     "start": "babel-node server/server.js",
     "dev": " nodemon --exec babel-node --presets @babel/preset-env  server/server.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
