@@ -90,7 +90,7 @@ describe('should retrieve specific user', () => {
     });
 });
 describe('should delete specific user', () => {
-    it('should not be delete specific user', (done) => {
+    it('should be delete specific user', (done) => {
         chai.request(server).delete('/api/v2/users/2').end((err, res) => {
             console.log(res.body);
             res.body.should.be.an('object');
@@ -99,6 +99,38 @@ describe('should delete specific user', () => {
     });
     it('should not be able to delete specific user', (done) => {
         chai.request(server).delete('/api/v2/users/300000').end((err, res) => {
+            console.log(res.body);
+            res.body.should.be.an('object');
+            done();
+        });
+    });
+});
+describe('should create a bank account ', () => {
+    it('should be able to create a bank account', (done) => {
+        chai.request(server).post('/api/v2/accounts').end((err, res) => {
+            console.log(res.body);
+            res.body.should.be.an('object');
+            done();
+        });
+    });
+    it('should not create a bank account', (done) => {
+        chai.request(server).post('/api/v2/accounts').end((err, res) => {
+            console.log(res.body);
+            res.body.should.be.an('object');
+            done();
+        });
+    });
+});
+describe('get bank accounts  ', () => {
+    it('should be able to create a bank account', (done) => {
+        chai.request(server).get('/api/v2/accounts').end((err, res) => {
+            console.log(res.body);
+            res.body.should.be.an('object');
+            done();
+        });
+    });
+    it('should not be able to get bank accounts', (done) => {
+        chai.request(server).get('/api/v2/accounts').end((err, res) => {
             console.log(res.body);
             res.body.should.be.an('object');
             done();
