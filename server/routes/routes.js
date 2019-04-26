@@ -22,7 +22,7 @@ const {
     createstaff,
     loginstaff
 } = staff;
-const {creditaccount}=Transact ;
+const {creditaccount,debitaccount}=Transact ;
 const usersv2Router = express.Router();
 //usersv2 endpoints
 usersv2Router.post('/api/v2/auth/signup', create);
@@ -39,6 +39,6 @@ usersv2Router.delete('/api/v2/accounts/:accountnumber',auth.verifyToken,deleteba
 usersv2Router.put('/api/v2/accounts/:accountnumber',auth.verifyToken,updatebankaccount);
 //
 //transactions version2 endpoints
-//usersv2Router.post('/api/v2/transactions/:accountnumber/debit',,debitaccount);
+usersv2Router.post('/api/v2/transactions/:accountnumber/debit',debitaccount);
 usersv2Router.post('/api/v2/transactions/:accountnumber/credit',creditaccount);
 export default usersv2Router;
