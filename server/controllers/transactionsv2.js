@@ -155,6 +155,6 @@ const Transact = {
                 message: error.message
             });
         }
-    }
+    },
 }
 export default Transact;

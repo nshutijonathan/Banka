@@ -45,7 +45,7 @@ VALUES($1,$2,$3,$4,$5,$6)returning *`;
                 if (decoded.data.type != 'admin') {
                     return res.status(401).send({
                         status: 401,
-                        'message': "You are not authorized"
+                        'message': "You are not authorized only admin"
                     })
                 }
             } catch (error) {

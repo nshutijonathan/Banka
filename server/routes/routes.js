@@ -22,21 +22,25 @@ const {
     createstaff,
     loginstaff
 } = staff;
-const {creditaccount,debitaccount}=Transact ;
+const {
+    creditaccount,
+    debitaccount,
+    getalltransactions
+} = Transact;
 const usersv2Router = express.Router();
 //usersv2 endpoints
 usersv2Router.post('/api/v2/auth/signup', create);
 usersv2Router.post('/api/v2/auth/signin', login);
-usersv2Router.get('/api/v2/users',auth.verifyToken,getall);
-usersv2Router.get('/api/v2/users/:id',auth.verifyToken,getone);
-usersv2Router.delete('/api/v2/users/:id',auth.verifyToken,deleteuser);
+usersv2Router.get('/api/v2/users', auth.verifyToken, getall);
+usersv2Router.get('/api/v2/users/:id', auth.verifyToken, getone);
+usersv2Router.delete('/api/v2/users/:id', auth.verifyToken, deleteuser);
 //usersv2Router.delete('/api/v2/users/:id',auth.verifyToken,deleteuser);
 //accountsv2 endpoints
-usersv2Router.post('/api/v2/accounts', createaccounts);
-usersv2Router.get('/api/v2/accounts',auth.verifyToken,Getallaccounts);
-usersv2Router.get('/api/v2/accounts/:accountnumber',auth.verifyToken,getoneaccount);
-usersv2Router.delete('/api/v2/accounts/:accountnumber',auth.verifyToken,deletebankaccount);
-usersv2Router.put('/api/v2/accounts/:accountnumber',auth.verifyToken,updatebankaccount);
+usersv2Router.post('/api/v2/accounts', auth.verifyToken, createaccounts);
+usersv2Router.get('/api/v2/accounts', auth.verifyToken, Getallaccounts);
+usersv2Router.get('/api/v2/accounts/:accountnumber', auth.verifyToken, getoneaccount);
+usersv2Router.delete('/api/v2/accounts/:accountnumber', auth.verifyToken, deletebankaccount);
+usersv2Router.put('/api/v2/accounts/:accountnumber', auth.verifyToken, updatebankaccount);
 //
 //transactions version2 endpoints
 usersv2Router.post('/api/v2/transactions/:accountnumber/debit',debitaccount);

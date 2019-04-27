@@ -1,6 +1,7 @@
 import pool from '../database/connect';
 import uuidv4 from 'uuid/v4';
 import jwt from 'jsonwebtoken';
+import auth from '../middlewares/authorizations.js';
 import validateaccounts from '../helpers/accounts_validations';
 /*let accountNumber=Math.floor((Math.random() * 10000000000)+1);*/
 //let accountNumber=Math.random().toString().slice(2).substr(0,9);
@@ -12,16 +13,17 @@ const accounts = {
         const createQuery = `INSERT INTO 
 accounts(accountNumber,createdOn,owner,type,status,balance)
 VALUES($1,$2,$3,$4,$5,$6)returning *`;
-        const owner_id = req.body.owner;
+        const owner_id = req.user.id;
         const query_owner = `SELECT firstname,lastname,email FROM users WHERE id=$1`;
         const values = [
             accountNumber,
             date,
-            req.body.owner,
+            owner_id,
             req.body.type,
-            req.body.status,
-            req.body.openingBalance
+            "active",
+            0
         ];
+        console.log(values);
         /*let accountNumber=req.body.accountNumber;*/
         let type = req.body.type;
         let status = req.body.status;
@@ -33,6 +35,7 @@ VALUES($1,$2,$3,$4,$5,$6)returning *`;
             } = await pool.query(query_owner, [owner_id]);
             owner = rows[0];
         } catch (error) {
+            console.log(error)
             return res.status(401).send({
                 error
             })
@@ -165,6 +168,5 @@ VALUES($1,$2,$3,$4,$5,$6)returning *`;
             })
         }
     }
-    
 }
 export default accounts;

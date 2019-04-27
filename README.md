@@ -26,17 +26,15 @@ Banka is core banking application that powers banking operations.It is meant to 
 | / | GET | The index page |
 | /api/v2/auth/signup/client| POST | Sign up |
 | /api/v2/auth/signin/client| POST | Sign in |
-| /api/v1/users| GET | Get all users |
-| /api/v1/users/:id| GET | Get specific user |
-| /api/v1/users/:id| DELETE| Delete specific user |
-| /api/v1/users/:id| PUT | Update a specific user |
-| /api/v1/accounts| POST | Create a user bank account |
-| /api/v1/accounts| GET| Get all  users bank accounts |
-| /api/v1/accounts/:accountNumber| PUT| Update specific user bank account |
-| /api/v1/accounts/:accountNumber| DELETE| Delete specific user bank account |
-| /api/v1/transactions/debit/:accountNumber| POST| Debit specific user bank account |
-| /api/v1/transactions/credit/:accountNumber| POST| Credit specific user bank account |
-| /api/v1/transactions| GET| Get all users bank account transactions |
+| /api/v2/users| GET | Get all users |
+| /api/v2/users/:id| GET | Get specific user |
+| /api/v2/users/:id| DELETE| Delete specific user |
+| /api/v2/accounts| POST | Create a user bank account |
+| /api/v2/accounts| GET| Get all  users bank accounts |
+| /api/v2/accounts/:accountNumber| DELETE| Delete specific user bank account |
+| /api/v2/transactions/debit/:accountNumber| POST| Debit specific user bank account |
+| /api/v2/transactions/credit/:accountNumber| POST| Credit specific user bank account |
+| /api/v2/transactions| GET| Get all users bank account transactions |
 ## Tools Used
 
 ### Language
