@@ -1,6 +1,7 @@
 import pool from '../database/connect';
 import validatetransactions from '../helpers/transactions';
 import jwt from 'jsonwebtoken';
+import auth from '../middlewares/authorizations.js';
 const Transact = {
     async creditaccount(req, res) {
         if (!req.body.amount) {
@@ -8,12 +9,19 @@ const Transact = {
                 'message': 'amount is  missing'
             });
         }
+        if(req.body.amount<0){
+            return res.status(400).send({'message':'amount must be greater than 0'})
+        }
         const creditquery = `INSERT INTO transactions (createdOn,type,accountNumber,cashier,amount,oldBalance,newBalance)
 		VALUES($1,$2,$3,$4,$5,$6,$7) returning *`;
+        const owner_id = req.user.id;
         let accountnumber = req.params.accountnumber;
         let typee = "credit";
         let date = new Date();
         let amount = req.body.amount;
+        let cashier=owner_id;
+        let balance=0;
+        let newbalance=1;
         if (!amount) {
             console.log("amount is missing");
         } else {
@@ -51,15 +59,16 @@ const Transact = {
             date,
             typee,
             accountnumber,
-            req.body.cashier,
+            cashier,
             req.body.amount,
-            req.body.balance,
-            req.body.newbalance
+            balance,
+            req.body.newbalancenewbalance
         ];
+        console.log(values);
         try {
             const {
                 rows
-            } = await pool.query(creditquery, values);
+            } = await pool.query(creditquery,[owner_id]);
             return res.status(201).json({
                 status: 201,
                 message: "sucessfully credited",
