@@ -18,7 +18,7 @@ dotenv.config();
 app.get('/', (req, res, next) => {
     return res.status(200).send({
         status: 200,
-        message: "Welcome to Banka!!",
+        message: "Welcome to Banka!",
     });
 });
 const port = process.env.PORT || 3000;
